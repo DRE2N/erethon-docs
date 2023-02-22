@@ -1,6 +1,7 @@
 ---
 title: Welcome
 sidebar_position: 1
+slug: /
 ---
 
 Welcome to the official Docs maintained by Erethon.

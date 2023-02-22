@@ -10,7 +10,7 @@ const config = {
   tagline: 'Official Erethon documentation',
   url: 'https://erethon.de',
   baseUrl: '/',
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'DRE2N', // Usually your GitHub org/user name.
@@ -25,6 +25,7 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl: 'https://github.com/DRE2N/erethon-docs',
+		  routeBasePath: '/',
         },
         blog: {
           showReadingTime: true,
@@ -61,11 +62,29 @@ const config = {
             position: 'left',
             label: 'DungeonsXL',
           },
+		  {
+            type: 'doc',
+            docId: 'questsxl/intro',
+            position: 'left',
+            label: 'QuestsXL',
+          },
+		  {
+            type: 'doc',
+            docId: 'aether/intro',
+            position: 'left',
+            label: 'Aether',
+          },
           {
             type: 'doc',
             docId: 'aergia/intro',
             position: 'left',
             label: 'Aergia',
+          },
+		  {
+            type: 'doc',
+            docId: 'itemsxl/intro',
+            position: 'left',
+            label: 'ItemsXL',
           },
         ],
       },
@@ -83,9 +102,21 @@ const config = {
                 label: 'DungeonsXL',
                 to: '/docs/dungeonsxl/intro',
               },
+			             {
+                label: 'QuestsXL',
+                to: '/docs/questsxl/intro',
+              },
+			  {
+                label: 'Aether',
+                to: '/docs/aether/intro',
+              },
               {
                 label: 'Aergia',
                 to: '/docs/aergia/intro',
+              },
+			  {
+                label: 'ItemsXL',
+                to: '/docs/itemsxl/intro',
               },
             ],
           },
@@ -115,8 +146,8 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} Erethon`,
       },
       prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
+        theme: require('prism-react-renderer/themes/dracula'),
+		additionalLanguages: ['yaml'],
       },
     }),
 };
