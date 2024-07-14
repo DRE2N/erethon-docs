@@ -9,7 +9,7 @@ const config = {
   title: 'Erethon Docs',
   tagline: 'Official Erethon documentation',
   url: 'https://erethon.de',
-  baseUrl: '/',
+  baseUrl: '/docs/',
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
