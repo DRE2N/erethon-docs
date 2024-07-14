@@ -3,7 +3,7 @@ title: Main Configuration
 sidebar_position: 3
 ---
 
-```yaml
+```
 # Main configuration of DungeonsXL (config.yml in DungeonsXL folder)
 
 # Don't edit this one.
