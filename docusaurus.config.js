@@ -2,7 +2,7 @@
 // Note: type annotations allow type checking and IDEs autocompletion
 
 const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const darkCodeTheme = require('prism-react-renderer/themes/vsDark');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -12,7 +12,7 @@ const config = {
   baseUrl: '/docs/',
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.png',
   organizationName: 'DRE2N', // Usually your GitHub org/user name.
   projectName: 'erethon-docs', // Usually your repo name.
 
@@ -43,11 +43,16 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      colorMode: {
+        defaultMode: 'dark',
+        disableSwitch: false,
+        respectPrefersColorScheme: true,
+      },
       navbar: {
         title: 'Erethon',
         logo: {
           alt: 'Erethon Site Logo',
-          src: 'img/logo.svg',
+          src: 'img/logo.png',
         },
         items: [
           {
@@ -76,15 +81,9 @@ const config = {
           },
           {
             type: 'doc',
-            docId: 'aergia/intro',
+            docId: 'bedrock/intro',
             position: 'left',
-            label: 'Aergia',
-          },
-		  {
-            type: 'doc',
-            docId: 'itemsxl/intro',
-            position: 'left',
-            label: 'ItemsXL',
+            label: 'Bedrock',
           },
         ],
       },
@@ -94,10 +93,6 @@ const config = {
           {
             title: 'Docs',
             items: [
-              {
-                label: 'Welcome',
-                to: '/docs/welcome',
-              },
               {
                 label: 'DungeonsXL',
                 to: '/docs/dungeonsxl/intro',
@@ -111,12 +106,8 @@ const config = {
                 to: '/docs/aether/intro',
               },
               {
-                label: 'Aergia',
-                to: '/docs/aergia/intro',
-              },
-			  {
-                label: 'ItemsXL',
-                to: '/docs/itemsxl/intro',
+                label: 'Bedrock',
+                to: '/docs/bedrock/intro',
               },
             ],
           },
@@ -127,6 +118,14 @@ const config = {
                 label: 'Discord',
                 href: 'https://dc.erethon.de',
               },
+              {
+                label: 'Youtube',
+                href: 'https://www.youtube.com/@erethon',
+              },
+              {
+                label: 'Instagram',
+                href: 'https://www.instagram.com/erethonmc',
+              },
             ],
           },
           {
@@ -134,7 +133,7 @@ const config = {
             items: [
               {
                 label: 'Dev Blogs',
-                to: 'https://erethon.de/category/dev/',
+                to: 'https://erethon.de/blogs',
               },
               {
                 label: 'GitHub',
@@ -146,8 +145,13 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} Erethon`,
       },
       prism: {
-        theme: require('prism-react-renderer/themes/dracula'),
-		additionalLanguages: ['yaml'],
+        theme: lightCodeTheme,
+        darkTheme: darkCodeTheme,
+		additionalLanguages: [
+            'kotlin',
+            'java',
+            'yaml',
+        ],
       },
     }),
 };
