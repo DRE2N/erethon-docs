@@ -67,17 +67,23 @@ const config = {
             position: 'left',
             label: 'DungeonsXL',
           },
-		  {
+          {   
             type: 'doc',
             docId: 'questsxl/intro',
             position: 'left',
             label: 'QuestsXL',
           },
-		  {
+          {
             type: 'doc',
             docId: 'aether/intro',
             position: 'left',
             label: 'Aether',
+          },
+          {
+            type: 'doc',
+            docId: 'spellbook/spells',
+            position: 'left',
+            label: 'Spellbook',
           },
           {
             type: 'doc',
@@ -101,9 +107,13 @@ const config = {
                 label: 'QuestsXL',
                 to: '/docs/questsxl/intro',
               },
-			  {
+{
                 label: 'Aether',
                 to: '/docs/aether/intro',
+              },
+              {
+                label: 'Spellbook',
+                to: '/docs/spellbook/spells',
               },
               {
                 label: 'Bedrock',
