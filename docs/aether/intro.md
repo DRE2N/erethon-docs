@@ -98,10 +98,21 @@ spells:
     Backstab: # Spellbook spell name
       chance: 20 # Chance this spell is triggered
 # Optional. The attributes the NPC should have. Supports all Minecraft and Spellbook attributes
+# Currently formatted this way as . are not valid in config sections. Due to change in 1.21.2 as attribute names
+# will no longer contain dots. 
 attributes:
-  health: 5
-  speed: 0.01
-  damage: 20
+  0:
+    id: "generic.max_health"
+    value: 20
+  1:
+    id: "generic.movement_speed"
+    value: 0.4
+  2:
+    id: "advantage.physical"
+    value: 50
+  3:
+    id: "generic.attack_damage"
+    value: 20
 # Optional. Equipment to wear. Hephaestus IDs
 equipment:
   hand: "minecraft:diamond_sword"
