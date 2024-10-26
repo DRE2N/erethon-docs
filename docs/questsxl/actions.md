@@ -6,181 +6,571 @@ sidebar_position: 2
 **Actions** können, wie alle anderen QXL-Funktionen, in einer Lang- und Kurzschreibweise geschrieben werden. Die Kurzschreibweise nutzt dabei nur eine Zeile.
 Für einige komplexe Actions steht die Kurzschreibweise nicht zur Verfügung.
 
-In dieser Dokumentation wird die Kurzschreibweise zu erst genannt und dann die Langschreibweise.
+# Actions
 
-## Animation
-``animation``
+## delay
+Delays the execution of a list of actions by a certain amount of time.
 
-Spielt eine Animation ab.
-* **name:** Der Name einer vorher erstellten Animation
-* **instanced:** true/false - Ob die Animation nur für den Spieler (oder seine Gruppe) sichtbar ist (true) oder für alle (false). Default = true.
-* **runAfter:** Actions, nachdem die Animation vollständig abgespielt wurde. 
-## Command
-``command``
+### Parameters:
 
-Führt einen Befehl aus. 
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `actions` | The list of actions to execute after the delay |  | true |
+| `duration` | The duration in seconds | 0 | true |
 
-* **command:** Der Befehl. Der Platzhalter `%player%` kann benutzt werden & wird durch den Namen des Spielers ersetzt.
-* **op:** true/false -  Ob der Befehl als OP (mit *-Permissions) ausgeführt wird oder nicht. Sollte vorsichtig genutzt werden. Default = false.
-* **console:** true/false - Ob der Befehl vom Server ausgeführt werden soll. Default = false.
-## Cutscene
-``cutscene``
+```yaml
+<no short example>
+```
 
-Spielt eine vorher erstellte Cutscene ab.
+```yaml
+delay:
+  duration: 10
+  actions:
+    - 'message: message=Hello world'
+```
 
-* **name:** Der Name einer vorher ingame erstellten Cutscene
-* **instanced:** true/false - Ob der Spieler nach Ende der Cutscene wieder an den Start zurückteleportiert wird (true), oder da bleibt wo die Cutscene endet (false). Default = false.
-* **runAfter:** Nachdem die Cutscene fertig abgespielt wurde.
-## Delay
-``delay``
+## dialogue
+Starts playing a dialogue. The dialogue needs to be defined in a separate file in. If the dialogue is not found, the action will fail on load.
 
-Führt eine oder mehrere Actions verzögert aus. Keine Kurzschreibweise möglich. 
+### Parameters:
 
-* **delay:** Die Verzögerung, gemessen in Ticks. Eine Sekunde -> 20 Ticks. 
-* **actions:** Eine Aufzählung der Actions, die nach dem Delay ausgeführt werden. Kurz- und Langform sind möglich.
-* **runAfter:** Nach Ausführung der verzögerten Action.
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `id` | The ID of the dialogue to play |  | true |
 
-## Dialogue
-``dialogue``
+```yaml
+- 'dialogue: id=example_dialogue'
+```
 
-Startet einen Dialog.
+```yaml
+dialogue:
+  id: example_dialogue
+```
 
-* **id:** Die ID des Dialogs.
+## display_marker
+**Currently not implemented**
 
-## Give Item
-``give_item``
+### Parameters:
 
-Vergibt ein oder mehrere Items an den Spieler.
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
 
-* **item:** Das Item. Kann ein Vanilla-Item-Name sein oder ein Custom-Item. 
-* **amount:** Die Menge des Items. Default = 1.
-* **chance:** Ein Wert von 0 bis 100, der die Chance angibt mit der dieses Item erhalten werden kann. Default = 100.
+```yaml
 
-## Hide IBC
-``hide_ibc``
+```
 
-Versteckt eine IBC.
+```yaml
 
-* **id:** ID der IBC.
+```
 
-## Message
-``message``
+## dummy
+This action does nothing. It is used for testing and debugging.
 
-Sendet eine Nachricht an den Spieler. 
+### Parameters:
 
-* **message:** Die Nachricht.
-## Mob Follow
-:::caution Nicht implementiert
-:::
-``mob_follow_player``
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
 
-Lässt einen Mob/NPC einem Spieler folgen.
+```yaml
+- 'dummy:'
+```
 
-## Paste schematic
-``paste_schematic``
+```yaml
 
-Fügt eine Schematic in der Welt ein.
+```
 
-* **schematic:** Der Name der Schematic
-* **time:** Optional. Zeit in Sekunden, nachdem die Schematic automatisch wieder entfernt wird (//undo)
-* **location:** QLocation
+## event_participation
+Add participation to an event. Always executed as a player
 
-## Permission
-``permission``
+### Parameters:
 
-Verändert die Permission oder Gruppen eines Spielers.
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `amount` | The amount of participation to add | 1 | false |
+| `id` | The ID of the event to participate in |  | true |
 
-* **permission:** Die Permission oder der Gruppen-Name.
-* **action:** `add`, `remove`, `add_group`, `remove_group` - Was passieren soll.
-## Repeat
-``repeat``
+```yaml
+- 'event_participation: id=example_event; amount=1'
+```
 
-Wiederholt eine oder mehrere Actions.
+```yaml
+event_participation:
+  id: example_event
+  amount: 1
+```
 
-* **delay:** Zeit zwischen einzelnen Wiederholungen, in Ticks (20 ticks -> 1 Sekunde)
-* **repetitions:** Wie oft die Actions wiederholt werden.
-* **actions:** Die Actions.
+## give_item
+Give an item to the player. The item needs to be defined in the Hephaestus item library. You can check if an item exists by using `/give` in Minecraft.
 
-## Reset IBC
-``reset_ibc``
+### Parameters:
 
-Setzt eine IBC auf den Weltzustand zurück.
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `amount` | The amount of items to give | 1 | false |
+| `chance` | The chance of the item being given. 100 is 100% chance, 0 is 0% chance | 100 | false |
+| `id` | The ID of the item to give |  | true |
 
-* **id:** Die ID der IBC
+```yaml
+- 'give_item: id=minecraft:stone; amount=420; chance=69'
+```
 
-## Run as
-``run_as``
+```yaml
+give_item:
+  id: 'minecraft:stone' # The ID needs to be quoted due to the colon
+  amount: 420
+  chance: 69
+```
 
-Führt eine Action für bestimmte Spieler aus.
+## hide_ibc
+Hides an InstancedBlockCollection from a player.
 
-* **runMode:** ``event_in_range``, ``event_participants`` oder ``online``. Default: ``online``
-* **runValue:** Nur wenn ``event_participants``: Mindestwert an Eventbeteiligung.
+### Parameters:
 
-## Show Beam
-:::caution Nicht implementiert in 1.19.3
-:::
-``show_beam``
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `id` | The ID of the IBC to hide |  | true |
 
-Zeigt einen Marker-Lichtstrahl an.
+```yaml
+- 'hide_ibc: id=example_collection'
+```
 
-## Show IBC 
-``show_ibc``
+```yaml
+hide_ibc:
+  id: example_collection
+```
 
-Zeigt eine IBC an.
+## job_exp
+Gives the player job experience.
 
-* **id:** Die ID der IBC
+### Parameters:
 
-## Spawner
-``spawner``
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `chance` | The chance of the action being executed. 1 is 100% chance, 0 is 0% chance | 1 | false |
+| `max` | The maximum amount of experience to give |  | true |
+| `min` | The minimum amount of experience to give |  | true |
 
-Triggered einen Spawner manuell.
-* **id:** Die ID des Spawners.
+```yaml
+- 'job_exp: min=1; max=10; chance=0.5'
+```
 
-## Spawn Mob
-``stage``
+```yaml
+job_exp:
+  min: 1
+  max: 10
+  chance: 0.5
+```
 
-Spawnt einen Mob oder NPC.
+## message
+Sends a message to the player all event participants.
 
-* **id:** Die ID des Mobs/NPCs.
-* **location:** QLocation
+### Parameters:
 
-## Stage change
-``stage``
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `message` | The message to send |  | true |
 
-Ändert die Stage des Spielers oder des Events.
+```yaml
+- 'message: message=Hello, world!'
+```
 
-* **quest:** Quest-ID
-* **id:** Stage-ID
+```yaml
+message:
+  message: Hello, world!
+```
 
-## Start Event
-``start_event``
+## objective_display
+Sets the display text of an objective for a player. Shown in the sidebar (right side of the screen).
 
-Startet ein Event.
+### Parameters:
 
-* **id:** ID des Events
-* **skipConditions:** Ob Conditions für den Event-Start ignoriert werden sollen.
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `id` | The ID of the quest or event to set the objective for |  | true |
+| `text` | The text to display, empty to clear |   | false |
 
-## Start Quest
-``start_quest``
+```yaml
+- 'objective_display: id=example_quest; text=Hello!'
+```
 
-Startet eine Quest.
+```yaml
+objective_display:
+  id: example_quest
+  text: Hello again!
+```
 
-* **id:** ID der Quest
+## paste_schematic
+Pastes a schematic at a location and undoes it after a certain amount of time, optionally.
 
-## Teleport
-``teleport``
+### Parameters:
 
-Teleportiert den Spieler. 
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `location` | The location to paste the schematic at. QLocation |  | true |
+| `schematic` | The name of the schematic file in the FAWE schematics folder |  | true |
+| `time` | The time in ticks after which the schematic will be undone | 60 | false |
 
-* QLocation
+```yaml
+- 'paste_schematic: location=~0,~0,~0; schematic=example.schematic; time=60'
+```
 
-## Title
-``title``
+```yaml
+paste_schematic:
+  location:
+    x: 123
+    y: 64
+    z: 321
+  schematic: example.schematic
+  time: 60
+```
 
-Sendet einen Titel an den Spieler.
+## permission
+Adds or removes a permission or group from a player.
 
-* **title:** Wie Vanilla-Command
-* **subtitle:** Wie Vanilla-Command
-* **fadeIn:** Wie Vanilla-Command
-* **stay:** Wie Vanilla-Command
-* **fadeOut:** Wie Vanilla-Command
+### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `action` | The action to perform. Can be `add`, `remove`, `add_group` or `remove_group` | `add` | false |
+| `permission` | The permission or group to add or remove |  | true |
+
+```yaml
+- 'permission: permission=example_permission; action=ADD'
+```
+
+```yaml
+permission:
+  permission: example_group # Yes, its called permission, but it can also be a group
+  action: add_group
+```
+
+## play_animation
+**Currently not implemented**
+
+### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+
+```yaml
+
+```
+
+```yaml
+
+```
+
+## play_cutscene
+Plays a cutscene. The cutscene needs to be created first.
+
+### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `id` | The ID of the cutscene to play |  | true |
+
+```yaml
+- 'play_cutscene: id=example_cutscene'
+```
+
+```yaml
+play_cutscene:
+  id: example_cutscene
+```
+
+## quest
+Starts a quest for the player. If the player already has the quest, the action will be skipped.
+
+### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `id` | The ID of the quest to start |  | true |
+
+```yaml
+- 'quest: id=example_quest'
+```
+
+```yaml
+quest:
+  id: example_quest
+```
+
+## remove_mob
+Removes one or multiple mobs from the world.
+
+### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `doDamage` | Whether the mob should take damage and die, or just be removed | false | false |
+| `id` | The ID of the mob to remove |  | true |
+| `radius` | The radius in which to remove the mob | 32 | false |
+
+```yaml
+- 'remove_mob: id=example_mob; radius=32'
+```
+
+```yaml
+remove_mob:
+  id: example_mob
+  radius: 32
+  doDamage: true
+```
+
+## repeat
+Repeats a set of actions a specified amount of times with a delay between each repetition.
+
+### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `actions` | The list of actions to repeat |  | true |
+| `delay` | The delay between each repetition in seconds | 0 | false |
+| `repetitions` | The amount of repetitions | 1 | false |
+
+```yaml
+<no short example>
+```
+
+```yaml
+repeat:
+  delay: 10
+  repetitions: 5
+  actions:
+    - 'message: message=Hello world'
+```
+
+## reset_ibc
+Resets an InstancedBlockCollection for a player (restores real, shared world state).
+
+### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `id` | The ID of the IBC to reset |  | true |
+
+```yaml
+- 'reset_ibc: id=example_collection'
+```
+
+```yaml
+reset_ibc:
+  id: example_collection
+```
+
+## run_as
+Runs a list of actions as a player. Useful for running actions on all players in an event. Optionally filters players by range or participation count.
+
+### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `actions` | The list of actions to execute |  | true |
+| `mode` | The mode in which the action should be run. One of `event_in_range`, `event_participants` or `online` | `online` | false |
+| `value` | The value to filter players by. For `event_participants`, this is the minimum participation count. For `event_in_range`, this is the range in blocks *added* to the event range. | 0 | false |
+
+```yaml
+<no short example>
+```
+
+```yaml
+run_as:
+  mode: event_in_range
+  value: 5
+  actions:
+    - 'message: message=Yeet'
+```
+
+## run_command
+Runs a command, optionally with full permissions (op) or as console. By default, the command is run as the player.
+
+### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `command` | The command to run, without the / |  | true |
+| `console` | Whether to run the command as console | false | false |
+| `op` | Whether to run the command as an op | false | false |
+
+```yaml
+- 'run_command: command=stop; console=true' # Shut down the server
+```
+
+```yaml
+run_command:
+  command: example_command
+  op: false
+  console: false
+```
+
+## score
+Modifies a score value. The score can be global, player-specific or event-specific. Scores are a powerful tool to track player progress and can be used in conditions and actions.For example, you could add 1 to a score called enemy_threat every time a player kills a mob during an event, and if the score reaches a certain value, you could spawn a boss.
+
+### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `operation` | The operation to perform. One of `add`, `remove`, `set` or `reset` | `add` | false |
+| `scope` | The scope of the score. One of `global`, `player` or `event` | `player` | false |
+| `score` | The score to modify |  | true |
+| `value` | The value to add, remove, set or reset | 1 | false |
+
+```yaml
+- 'score: score=enemy_threat; value=1; operation=add scope=event'
+```
+
+```yaml
+score:
+  score: enemy_threat
+  value: 1
+  operation: add
+  scope: event
+```
+
+## show_ibc
+Shows an Instanced Block Collection to the player.
+
+### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `id` | The ID of the collection to show |  | true |
+
+```yaml
+- 'show_ibc: id=example_collection'
+```
+
+```yaml
+show_ibc:
+  id: example_collection
+```
+
+## spawn_mob
+Spawns a mob at a location.
+
+### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `id` | The ID of the mob to spawn |  | true |
+| `location` | The location to spawn the mob at. QLocation |  | true |
+
+```yaml
+- 'spawn_mob: id=example_mob; location: 0, 0, 0'
+```
+
+```yaml
+spawn_mob:
+  id: example_mob
+  location: 
+    x: ~40
+    y: ~0
+    z: ~5
+```
+
+## spawner
+Currently only triggers a spawner. Spawners can be set-up in Aether. This will be expanded in the future.
+
+### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `id` | The ID of the spawner to trigger |  | true |
+
+```yaml
+- 'spawner: id=example_spawner'
+```
+
+```yaml
+spawner:
+  id: example_spawner
+```
+
+## stage
+Changes the current stage of a quest or event. This is a powerful actin that can be used for branching quests or events. For example, you could create a dialogue that gives the player a choice, and depending on the choice, you could set a different stage.
+
+### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `id` | The quest or event to change the stage of |  | true |
+| `stage` | The stage to set |  | true |
+
+```yaml
+- 'stage: id=example_quest; stage=1'
+```
+
+```yaml
+stage:
+  id: example_event
+  stage: 99
+```
+
+## start_event
+Starts an event.
+
+### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `id` | The ID of the event to start |  | true |
+| `skipConditions` | Whether to skip the event's conditions | false | false |
+
+```yaml
+- 'start_event: id=example_event'
+```
+
+```yaml
+start_event:
+  id: example_event
+  skipConditions: true
+```
+
+## teleport
+Teleports the player to a location
+
+### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `target` | The location to teleport the player to |  | true |
+
+```yaml
+- 'teleport: target=~0, ~1, ~0' # Teleports the player one block up
+```
+
+```yaml
+teleport:
+  target:
+    x: 0
+    y: 64
+    z: 0
+```
+
+## title
+Sends a title to the player or all event participants, optionally with specified behaviour.
+
+### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `fadeIn` | The time in ticks the title takes to fade in | 10 | false |
+| `fadeOut` | The time in ticks the title takes to fade out | 10 | false |
+| `stay` | The time in ticks the title stays on screen | 20 | false |
+| `subtitle` | The subtitle to send |   | false |
+| `title` | The title to send |  | true |
+
+```yaml
+- 'title: title=Hello, world!'
+```
+
+```yaml
+title:
+  title: Hello, world!
+  subtitle: This is a subtitle
+  fadeIn: 1
+  stay: 5
+  fadeOut: 1
+```
+
