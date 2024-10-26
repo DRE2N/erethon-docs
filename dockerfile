@@ -17,7 +17,7 @@ WORKDIR /opt/docusaurus
 ## Copy over the source code.
 COPY . /opt/docusaurus/
 ## Install dependencies with `--immutable` to ensure reproducibility.
-RUN npm ci
+npm create astro@latest -- --template starlight
 ## Build the static site.
 RUN npm run build
 
