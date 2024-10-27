@@ -3,8 +3,6 @@ title: Objectives
 sidebar_position: 4
 ---
 
-# Objectives
-
 ## block_interact
 This objective is completed when a player interacts with a block at the specified location.
 
@@ -176,16 +174,16 @@ This objective is completed when a player kills a specific mob, optionally withi
 
 | Parameter | Description | Default | Required |
 |-----------|-------------|---------|----------|
-| `id` | The ID of the mob |  | true |
+| `mob` | The ID of the mob |  | true |
 | `radius` | The radius around the event in which the mob has to be killed. Useful for events | -1 | false |
 
 ```yaml
-kill_mob: id=evil_mob
+kill_mob: mob=evil_mob
 ```
 
 ```yaml
 kill_mob:
-  id: 'evil_mob'
+  mob: 'evil_mob'
   radius: 10
 ```
 
