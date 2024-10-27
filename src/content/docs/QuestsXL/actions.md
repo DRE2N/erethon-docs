@@ -30,7 +30,7 @@ delay:
 ```
 
 ## dialogue
-Starts playing a dialogue. The dialogue needs to be defined in a separate file in. <br>If the dialogue is not found, the action will fail on load.
+Starts playing a dialogue. The dialogue needs to be defined in a separate file in. If the dialogue is not found, the action will fail on load.
 
 ### Parameters:
 
@@ -100,7 +100,7 @@ event_participation:
 ```
 
 ## give_item
-Give an item to the player. The item needs to be defined in the Hephaestus item library. <br>You can check if an item exists by using `/give` in Minecraft.
+Give an item to the player. The item needs to be defined in the Hephaestus item library. You can check if an item exists by using `/give` in Minecraft.
 
 ### Parameters:
 
@@ -405,7 +405,7 @@ run_command:
 ```
 
 ## score
-Modifies a score value. The score can be global, player-specific or event-specific. <br>Scores are a powerful tool to track player progress and can be used in conditions and actions.<br>For example, you could add 1 to a score called enemy_threat every time a player kills a mob during an event, and if the score reaches a certain value, you could spawn a boss.
+Modifies a score value. The score can be global, player-specific or event-specific. Scores are a powerful tool to track player progress and can be used in conditions and actions.For example, you could add 1 to a score called enemy_threat every time a player kills a mob during an event, and if the score reaches a certain value, you could spawn a boss.
 
 ### Parameters:
 
@@ -470,7 +470,7 @@ spawn_mob:
 ```
 
 ## spawner
-Currently only triggers a spawner. Spawners can be set-up in Aether. <br>This will be expanded in the future.
+Currently only triggers a spawner. Spawners can be set-up in Aether. This will be expanded in the future.
 
 ### Parameters:
 
@@ -488,7 +488,7 @@ spawner:
 ```
 
 ## stage
-Changes the current stage of a quest or event. This is a powerful actin that can be used for branching quests or events. <br>For example, you could create a dialogue that gives the player a choice, and depending on the choice, you could set a different stage.
+Changes the current stage of a quest or event. This is a powerful actin that can be used for branching quests or events. For example, you could create a dialogue that gives the player a choice, and depending on the choice, you could set a different stage.
 
 ### Parameters:
 
