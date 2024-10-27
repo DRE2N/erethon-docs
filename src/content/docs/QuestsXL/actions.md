@@ -30,7 +30,7 @@ delay:
 ```
 
 ## dialogue
-Starts playing a dialogue. The dialogue needs to be defined in a separate file in. If the dialogue is not found, the action will fail on load.
+Starts playing a dialogue. The dialogue needs to be defined in a separate file in. <br>If the dialogue is not found, the action will fail on load.
 
 ### Parameters:
 
@@ -100,7 +100,7 @@ event_participation:
 ```
 
 ## give_item
-Give an item to the player. The item needs to be defined in the Hephaestus item library. You can check if an item exists by using `/give` in Minecraft.
+Give an item to the player. The item needs to be defined in the Hephaestus item library. <br>You can check if an item exists by using `/give` in Minecraft.
 
 ### Parameters:
 
@@ -162,7 +162,7 @@ job_exp:
 ```
 
 ## message
-Sends a message to the player all event participants.
+Sends a message to the player or all event participants.
 
 ### Parameters:
 
@@ -211,7 +211,7 @@ Pastes a schematic at a location and undoes it after a certain amount of time, o
 | `time` | The time in ticks after which the schematic will be undone | 60 | false |
 
 ```yaml
-- 'paste_schematic: location=~0,~0,~0; schematic=example.schematic; time=60'
+- 'paste_schematic: x=~5; y=~0; z=0; schematic=example.schematic; time=60'
 ```
 
 ```yaml
@@ -368,7 +368,7 @@ Runs a list of actions as a player. Useful for running actions on all players in
 |-----------|-------------|---------|----------|
 | `actions` | The list of actions to execute |  | true |
 | `mode` | The mode in which the action should be run. One of `event_in_range`, `event_participants` or `online` | `online` | false |
-| `value` | The value to filter players by. For `event_participants`, this is the minimum participation count. For `event_in_range`, this is the range in blocks *added* to the event range. | 0 | false |
+| `value` | The value to filter players by. For `event_participants`, this is the min. participation. For `event_in_range`, this is the range in blocks *added* to the event range. | 0 | false |
 
 ```yaml
 <no short example>
@@ -405,7 +405,7 @@ run_command:
 ```
 
 ## score
-Modifies a score value. The score can be global, player-specific or event-specific. Scores are a powerful tool to track player progress and can be used in conditions and actions.For example, you could add 1 to a score called enemy_threat every time a player kills a mob during an event, and if the score reaches a certain value, you could spawn a boss.
+Modifies a score value. The score can be global, player-specific or event-specific. <br>Scores are a powerful tool to track player progress and can be used in conditions and actions.<br>For example, you could add 1 to a score called enemy_threat every time a player kills a mob during an event, and if the score reaches a certain value, you could spawn a boss.
 
 ### Parameters:
 
@@ -457,7 +457,7 @@ Spawns a mob at a location.
 | `location` | The location to spawn the mob at. QLocation |  | true |
 
 ```yaml
-- 'spawn_mob: id=example_mob; location: 0, 0, 0'
+- 'spawn_mob: id=example_mob; x=5; y=0; z=0;'
 ```
 
 ```yaml
@@ -470,7 +470,7 @@ spawn_mob:
 ```
 
 ## spawner
-Currently only triggers a spawner. Spawners can be set-up in Aether. This will be expanded in the future.
+Currently only triggers a spawner. Spawners can be set-up in Aether. <br>This will be expanded in the future.
 
 ### Parameters:
 
@@ -488,7 +488,7 @@ spawner:
 ```
 
 ## stage
-Changes the current stage of a quest or event. This is a powerful actin that can be used for branching quests or events. For example, you could create a dialogue that gives the player a choice, and depending on the choice, you could set a different stage.
+Changes the current stage of a quest or event. This is a powerful actin that can be used for branching quests or events. <br>For example, you could create a dialogue that gives the player a choice, and depending on the choice, you could set a different stage.
 
 ### Parameters:
 
@@ -537,7 +537,7 @@ Teleports the player to a location
 | `target` | The location to teleport the player to |  | true |
 
 ```yaml
-- 'teleport: target=~0, ~1, ~0' # Teleports the player one block up
+- 'teleport: x=~0; y=~1; z=~0;' # Teleports the player one block up
 ```
 
 ```yaml
