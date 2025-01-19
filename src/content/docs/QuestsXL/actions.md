@@ -1,10 +1,4 @@
----
-title: Actions
-sidebar_position: 2
----
-
-**Actions** können, wie alle anderen QXL-Funktionen, in einer Lang- und Kurzschreibweise geschrieben werden. Die Kurzschreibweise nutzt dabei nur eine Zeile.
-Für einige komplexe Actions steht die Kurzschreibweise nicht zur Verfügung.
+# Actions
 
 ## delay
 Delays the execution of a list of actions by a certain amount of time.
@@ -151,7 +145,7 @@ Sends a message to the player or all event participants.
 | `message` | The message to send |  | true |
 
 ```yaml
-- 'message: message=Hello, world!'
+message: message=Hello, world!
 ```
 
 ```yaml
@@ -289,7 +283,7 @@ Removes one or multiple mobs from the world.
 | `radius` | The radius in which to remove the mob | 32 | false |
 
 ```yaml
-- 'remove_mob: mob=example_mob; radius=32'
+remove_mob: mob=example_mob; radius=32
 ```
 
 ```yaml
@@ -332,7 +326,7 @@ Resets an InstancedBlockCollection for a player (restores real, shared world sta
 | `ibc` | The ID of the IBC to reset |  | true |
 
 ```yaml
-- 'reset_ibc: ibc=example_collection'
+reset_ibc: ibc=example_collection
 ```
 
 ```yaml
@@ -375,7 +369,7 @@ Runs a command, optionally with full permissions (op) or as console. By default,
 | `op` | Whether to run the command as an op | false | false |
 
 ```yaml
-- 'run_command: command=stop; console=true' # Shut down the server
+run_command: command=stop; console=true # Shut down the server
 ```
 
 ```yaml
@@ -400,7 +394,7 @@ For example, you could add 1 to a score called enemy_threat every time a player 
 | `value` | The value to add, remove, set or reset | 1 | false |
 
 ```yaml
-- 'score: score=enemy_threat; value=1; operation=add scope=event'
+score: score=enemy_threat; value=1; operation=add scope=event
 ```
 
 ```yaml
@@ -421,7 +415,7 @@ Shows an Instanced Block Collection to the player.
 | `ibc` | The ID of the collection to show |  | true |
 
 ```yaml
-- 'show_ibc: ibc=example_collection'
+show_ibc: ibc=example_collection
 ```
 
 ```yaml
@@ -440,7 +434,7 @@ Spawns a mob at a location.
 | `mob` | The ID of the mob to spawn |  | true |
 
 ```yaml
-- 'spawn_mob: mob=example_mob; x=5; y=0; z=0;'
+spawn_mob: mob=example_mob; x=5; y=0; z=0
 ```
 
 ```yaml
@@ -463,7 +457,7 @@ This will be expanded in the future.
 | `spawner` | The ID of the spawner to trigger |  | true |
 
 ```yaml
-- 'spawner: spawner=example_spawner'
+spawner: spawner=example_spawner
 ```
 
 ```yaml
@@ -483,7 +477,7 @@ For example, you could create a dialogue that gives the player a choice, and dep
 | `stage` | The stage to set |  | true |
 
 ```yaml
-- 'stage: id=example_quest; stage=1'
+stage: id=example_quest; stage=1
 ```
 
 ```yaml
@@ -503,7 +497,7 @@ Starts an event.
 | `skipConditions` | Whether to skip the event's conditions | false | false |
 
 ```yaml
-- 'start_event: event=example_event'
+start_event: event=example_event
 ```
 
 ```yaml
@@ -522,7 +516,7 @@ Starts a quest for the player. If the player already has the quest, the action w
 | `quest` | The ID of the quest to start |  | true |
 
 ```yaml
-- 'start_quest: quest=example_quest'
+start_quest: quest=example_quest
 ```
 
 ```yaml
@@ -540,7 +534,7 @@ Teleports the player to a location
 | `target` | The location to teleport the player to |  | true |
 
 ```yaml
-- 'teleport: x=~0; y=~1; z=~0;' # Teleports the player one block up
+teleport: x=~0; y=~1; z=~0 # Teleports the player one block up
 ```
 
 ```yaml
@@ -565,7 +559,7 @@ Sends a title to the player or all event participants, optionally with specified
 | `title` | The title to send |  | true |
 
 ```yaml
-- 'title: title=Hello, world!'
+title: title=Hello, world!
 ```
 
 ```yaml
@@ -576,8 +570,4 @@ title:
   stay: 5
   fadeOut: 1
 ```
-
-
-
-
 
