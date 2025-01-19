@@ -1,5 +1,7 @@
-# Objectives
-
+---
+title: Actions
+sidebar_position: 5
+---
 ## block_interact
 This objective is completed when a player interacts with a block at the specified location.
 

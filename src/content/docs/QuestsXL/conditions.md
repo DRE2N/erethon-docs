@@ -1,5 +1,7 @@
-# Conditions
-
+---
+title: Conditions
+sidebar_position: 4
+---
 ## active_quest
 Checks if the player has the specified quest active.
 

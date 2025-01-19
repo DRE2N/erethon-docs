@@ -1,5 +1,7 @@
-# Actions
-
+---
+title: Actions
+sidebar_position: 3
+---
 ## delay
 Delays the execution of a list of actions by a certain amount of time.
 

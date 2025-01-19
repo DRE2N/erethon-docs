@@ -1,3 +1,7 @@
+---
+title: Events
+sidebar_position: 2
+---
 **Events** sind ein wichtiger Bestandteil von QXL und ein guter Weg, Erethon lebendig wirken zu lassen. Events können so gut wie alle Actions, Objectives und Conditions nutzen. Im Gegensatz zu Quests sind Events nicht an einen Spieler (oder eine Gruppe) gebunden. Tatsächlich brauchen sie gar keinen Spieler und können theoretisch ganz von alleine ablaufen und abgeschlossen werden.
 
 Events werden erstellt, in dem eine Datei im Ordner `events` angelegt wird. Der Datei-Name ist dabei - wie bei Quests auch - die ID des Events. Dateien im `events`-Ordner können wie gewohnt in Unterordnern sortiert werden.

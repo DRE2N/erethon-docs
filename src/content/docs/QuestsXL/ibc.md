@@ -1,3 +1,7 @@
+---
+title: Actions
+sidebar_position: 6
+---
 Eine **Instanced Block Collection** (**IBC**) ist eine Sammlung von Blöcken und Blockzuständen, die nur für einen bestimmten Spieler sichtbar ist. Mit IBCs lassen sich Blockänderungen für einen Spieler anzeigen, ohne den wirklichen Zustand der Welt zu ändern. Für den Spieler, für den eine IBC angezeigt wird, ist diese jedoch vollständige Realität - er kollidiert mit den Blöcken, kann auf ihnen Laufen, etc.
 
 ![](https://puu.sh/HF2OG/1a3a0f9bed.png)
