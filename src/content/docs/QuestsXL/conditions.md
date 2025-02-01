@@ -20,6 +20,28 @@ active_quest:
   quest: example_quest
 ```
 
+## attribute
+This condition is successful if the player's attribute value is within a certain range.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `` | The ID of the attribute to check. |  | true |
+| `` | The maximum value the attribute has to be. | 4096 | false |
+| `` | The minimum value the attribute has to be. | 0 | false |
+
+```yaml
+attribute: id=advantage_physical; min_value=10; max_value=999
+```
+
+```yaml
+attribute:
+  id: max_health
+  min_value: 10
+  max_value: 20
+```
+
 ## completed_quest
 Checks if the player has the specified quest completed.
 
@@ -56,6 +78,38 @@ event_state: event=example_event; state=active
 event_state:
   event: example_event
   state: active
+```
+
+## fire
+This condition is successful if the player is on fire.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+
+```yaml
+fire:
+```
+
+```yaml
+fire:
+```
+
+## freezing
+This condition is successful if the player is frozen, e.g. in powder snow.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+
+```yaml
+freezing:
+```
+
+```yaml
+freezing:
 ```
 
 ## global_score
@@ -96,6 +150,44 @@ group_size: min=2; max=5
 group_size:
   min: 2
   max: 5
+```
+
+## health
+This condition is successful if the player's health is within the specified range.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `` | The maximum health value. | 4096 | false |
+| `` | The minimum health value. | 0 | false |
+
+```yaml
+health: min=10; max=20
+```
+
+```yaml
+health:
+  min: 10
+  max: 20
+```
+
+## idle
+This condition is successful if the player has been idle for a certain amount of time.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `` | The duration in seconds the player has to be idle for, in second |  | true |
+
+```yaml
+idle: idle_duration=10
+```
+
+```yaml
+idle:
+  idle_duration: 10
 ```
 
 ## inventory_contains
@@ -200,6 +292,40 @@ looking_at:
   block: DIAMOND_BLOCK
 ```
 
+## mounted
+This condition is successful if the player is mounted on a vehicle.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `` | The type of entity the player is mounted on. |  | false |
+
+```yaml
+mounted:
+```
+
+```yaml
+mounted:
+  entity_type: horse
+```
+
+## passengers
+This condition is successful if the player has any passengers.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+
+```yaml
+passengers:
+```
+
+```yaml
+passengers:
+```
+
 ## permission
 Checks if the player has a certain permission.
 
@@ -263,6 +389,22 @@ players_in_range:
   range: 16
 ```
 
+## rain
+This condition is successful if it is raining.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+
+```yaml
+rain:
+```
+
+```yaml
+rain:
+```
+
 ## region
 Checks if the player is in a certain region. QXL-Region, not Faction-Region!
 
@@ -279,6 +421,38 @@ region: region=region_id
 ```yaml
 region:
   region: region_id
+```
+
+## sneaking
+This condition is successful if the player is sneaking.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+
+```yaml
+sneaking:
+```
+
+```yaml
+sneaking:
+```
+
+## sprinting
+This condition is successful if the player is sprinting.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+
+```yaml
+sprinting:
+```
+
+```yaml
+sprinting:
 ```
 
 ## time
@@ -304,5 +478,43 @@ time:
   maxHour: 20
   maxMinute: 0
   timeZone: ECT
+```
+
+## velocity
+This condition is successful if the player's velocity is greater than the specified values.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `` | The minimum velocity in the x direction. | 0 | false |
+| `` | The minimum velocity in the y direction. | 0 | false |
+| `` | The minimum velocity in the z direction. | 0 | false |
+
+```yaml
+velocity: x=0.3
+```
+
+```yaml
+velocity:
+  x: 0.5
+  y: 0.5
+  z: 0.5
+```
+
+## wet
+This condition is successful if the player is in water, rain or a bubble column.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+
+```yaml
+wet:
+```
+
+```yaml
+wet:
 ```
 
