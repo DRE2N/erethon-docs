@@ -1,7 +1,8 @@
 ---
-title: Actions
+title: Objectives
 sidebar_position: 5
 ---
+
 ## block_interact
 This objective is completed when a player interacts with a block at the specified location. Can be cancelled.
 
@@ -30,7 +31,7 @@ This objective is completed when the player breeds two entities.
 
 | Parameter | Description | Default | Required |
 |-----------|-------------|---------|----------|
-| `` | The entity type that has to be bred |  | true |
+| `entityType` | The entity type that has to be bred |  | true |
 
 ```yaml
 breed: entity_type=pig
@@ -48,8 +49,8 @@ This objective is completed when the player sends a message.
 
 | Parameter | Description | Default | Required |
 |-----------|-------------|---------|----------|
-| `` | The message that the player has to send. |  | false |
-| `` | Whether the message has to be an exact match. | false | false |
+| `exactMatch` | Whether the message has to be an exact match. | false | false |
+| `message` | The message that the player has to send. |  | false |
 
 ```yaml
 chat:

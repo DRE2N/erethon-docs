@@ -2,6 +2,7 @@
 title: Conditions
 sidebar_position: 4
 ---
+
 ## active_quest
 Checks if the player has the specified quest active.
 
@@ -27,9 +28,9 @@ This condition is successful if the player's attribute value is within a certain
 
 | Parameter | Description | Default | Required |
 |-----------|-------------|---------|----------|
-| `` | The ID of the attribute to check. |  | true |
-| `` | The maximum value the attribute has to be. | 4096 | false |
-| `` | The minimum value the attribute has to be. | 0 | false |
+| `attribute` | The ID of the attribute to check. |  | true |
+| `maxValue` | The maximum value the attribute has to be. | 4096 | false |
+| `minValue` | The minimum value the attribute has to be. | 0 | false |
 
 ```yaml
 attribute: id=advantage_physical; min_value=10; max_value=999
@@ -159,8 +160,8 @@ This condition is successful if the player's health is within the specified rang
 
 | Parameter | Description | Default | Required |
 |-----------|-------------|---------|----------|
-| `` | The maximum health value. | 4096 | false |
-| `` | The minimum health value. | 0 | false |
+| `max` | The maximum health value. | 4096 | false |
+| `min` | The minimum health value. | 0 | false |
 
 ```yaml
 health: min=10; max=20
@@ -179,15 +180,15 @@ This condition is successful if the player has been idle for a certain amount of
 
 | Parameter | Description | Default | Required |
 |-----------|-------------|---------|----------|
-| `` | The duration in seconds the player has to be idle for, in second |  | true |
+| `duration` | The duration in seconds the player has to be idle for, in second |  | true |
 
 ```yaml
-idle: idle_duration=10
+idle: duration=10
 ```
 
 ```yaml
 idle:
-  idle_duration: 10
+  duration: 10
 ```
 
 ## inventory_contains
@@ -299,7 +300,7 @@ This condition is successful if the player is mounted on a vehicle.
 
 | Parameter | Description | Default | Required |
 |-----------|-------------|---------|----------|
-| `` | The type of entity the player is mounted on. |  | false |
+| `entity_type` | The type of entity the player is mounted on. |  | false |
 
 ```yaml
 mounted:
@@ -487,9 +488,9 @@ This condition is successful if the player's velocity is greater than the specif
 
 | Parameter | Description | Default | Required |
 |-----------|-------------|---------|----------|
-| `` | The minimum velocity in the x direction. | 0 | false |
-| `` | The minimum velocity in the y direction. | 0 | false |
-| `` | The minimum velocity in the z direction. | 0 | false |
+| `x` | The minimum velocity in the x direction. | 0 | false |
+| `y` | The minimum velocity in the y direction. | 0 | false |
+| `z` | The minimum velocity in the z direction. | 0 | false |
 
 ```yaml
 velocity: x=0.3

@@ -2,6 +2,7 @@
 title: Actions
 sidebar_position: 3
 ---
+
 ## delay
 Delays the execution of a list of actions by a certain amount of time.
 
@@ -162,9 +163,9 @@ This action modifies a player's attribute.
 
 | Parameter | Description | Default | Required |
 |-----------|-------------|---------|----------|
-| `` | The ID of the attribute to modify. |  | true |
-| `` | The amount to modify the attribute by. | 0 | false |
-| `` | The duration in ticks the attribute should be modified for | 0 | false |
+| `amount` | The amount to modify the attribute by. | 0 | false |
+| `duration` | The duration in ticks the attribute should be modified for | 0 | false |
+| `id` | The ID of the attribute to modify. |  | true |
 
 ```yaml
 modify_attribute: id=max_health; amount=200; duration=20
@@ -642,9 +643,9 @@ Adds velocity to a player
 
 | Parameter | Description | Default | Required |
 |-----------|-------------|---------|----------|
-| `` | The x velocity | 0 | false |
-| `` | The y velocity | 0 | false |
-| `` | The z velocity | 0 | false |
+| `x` | The x velocity | 0 | false |
+| `y` | The y velocity | 0 | false |
+| `z` | The z velocity | 0 | false |
 
 ```yaml
 add_velocity: x=1; y=1.5; z=1
