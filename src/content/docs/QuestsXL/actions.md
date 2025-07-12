@@ -198,31 +198,6 @@ objective_display:
   text: Hello again!
 ```
 
-## paste_schematic
-Pastes a schematic at a location and undoes it after a certain amount of time, optionally.
-
-#### Parameters:
-
-| Parameter | Description | Default | Required |
-|-----------|-------------|---------|----------|
-| `location` | The location to paste the schematic at. QLocation |  | true |
-| `schematic` | The name of the schematic file in the FAWE schematics folder |  | true |
-| `time` | The time in ticks after which the schematic will be undone | 60 | false |
-
-```yaml
-paste_schematic: x=~5; y=~0; z=0; schematic=example.schematic; time=60
-```
-
-```yaml
-paste_schematic:
-  location:
-    x: 123
-    y: 64
-    z: 321
-  schematic: example.schematic
-  time: 60
-```
-
 ## permission
 Adds or removes a permission or group from a player.
 
@@ -294,28 +269,6 @@ play_dialogue: dialogue=example_dialogue
 ```yaml
 dialogue:
   id: example_dialogue
-```
-
-## remove_mob
-Removes one or multiple mobs from the world.
-
-#### Parameters:
-
-| Parameter | Description | Default | Required |
-|-----------|-------------|---------|----------|
-| `doDamage` | Whether the mob should take damage and die, or just be removed | false | false |
-| `mob` | The ID of the mob to remove |  | true |
-| `radius` | The radius in which to remove the mob | 32 | false |
-
-```yaml
-remove_mob: mob=example_mob; radius=32
-```
-
-```yaml
-remove_mob:
-  mob: example_mob
-  radius: 32
-  doDamage: true
 ```
 
 ## repeat
@@ -486,48 +439,6 @@ show_ibc: ibc=example_collection
 ```yaml
 show_ibc:
   ibc: example_collection
-```
-
-## spawn_mob
-Spawns a mob at a location.
-
-#### Parameters:
-
-| Parameter | Description | Default | Required |
-|-----------|-------------|---------|----------|
-| `location` | The location to spawn the mob at. QLocation |  | true |
-| `mob` | The ID of the mob to spawn |  | true |
-
-```yaml
-spawn_mob: mob=example_mob; x=5; y=0; z=0
-```
-
-```yaml
-spawn_mob:
-  mob: example_mob
-  location: 
-    x: ~40
-    y: ~0
-    z: ~5
-```
-
-## spawner
-Currently only triggers a spawner. Spawners can be set-up in Aether. 
-This will be expanded in the future.
-
-#### Parameters:
-
-| Parameter | Description | Default | Required |
-|-----------|-------------|---------|----------|
-| `spawner` | The ID of the spawner to trigger |  | true |
-
-```yaml
-spawner: spawner=example_spawner
-```
-
-```yaml
-spawner:
-  spawner: example_spawner
 ```
 
 ## stage

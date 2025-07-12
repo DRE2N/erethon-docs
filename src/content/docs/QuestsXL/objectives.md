@@ -62,43 +62,6 @@ chat:
   exactMatch: true
 ```
 
-## consume_item
-An item needs to be consumed to complete this objective. Hephaestus item keys are used. Can be cancelled.
-
-#### Parameters:
-
-| Parameter | Description | Default | Required |
-|-----------|-------------|---------|----------|
-| `item` | The key of the item that needs to be consumed. Same as in /give |  | true |
-
-```yaml
-consume_item: item=minecraft:apple
-```
-
-```yaml
-consume_item:
-  item: 'minecraft:apple' # Needs to be quoted due to the colon.
-```
-
-## craft
-An item needs to be crafted to complete this objective. Supports both vanilla crafting as well as JobsXL crafting. If both are set, both can be used to complete the objective.
-
-#### Parameters:
-
-| Parameter | Description | Default | Required |
-|-----------|-------------|---------|----------|
-| `item` | The key of the item that needs to be crafted. Hephaestus. Same as in /give |  | false |
-| `jxl_item` | The id of the job item that needs to be crafted. |  | false |
-
-```yaml
-craft: jxl_item=fancy_sword
-```
-
-```yaml
-craft:
-  item: 'erethon:fancy_sword' # Needs to be quoted due to the colon.
-```
-
 ## death
 This objective is completed when the player dies.
 
@@ -113,24 +76,6 @@ death:
 
 ```yaml
 death:
-```
-
-## drop_item
-Drop an item to complete this objective. Can be cancelled.
-
-#### Parameters:
-
-| Parameter | Description | Default | Required |
-|-----------|-------------|---------|----------|
-| `item` | The key of the item that needs to be dropped. Same as in /give |  | true |
-
-```yaml
-drop_item: item=erethon:fancy_sword
-```
-
-```yaml
-drop_item:
-  item: 'erethon:fancy_sword' # Needs to be quoted due to the colon.
 ```
 
 ## enter_region
@@ -219,26 +164,6 @@ jump:
 jump:
 ```
 
-## kill_mob
-This objective is completed when a player kills a specific mob, optionally within a certain radius around an event.
-
-#### Parameters:
-
-| Parameter | Description | Default | Required |
-|-----------|-------------|---------|----------|
-| `mob` | The ID of the mob |  | true |
-| `radius` | The radius around the event in which the mob has to be killed. Useful for events | -1 | false |
-
-```yaml
-kill_mob: mob=evil_mob
-```
-
-```yaml
-kill_mob:
-  mob: 'evil_mob'
-  radius: 10
-```
-
 ## leave_region
 This objective is completed when a player leaves a specific region. QuestsXL regions are used. `/q region`
 
@@ -292,25 +217,6 @@ login:
 
 ```yaml
 login:
-```
-
-## pickup_item
-This objective is completed when the player picks up a specific item. Can be cancelled, preventing the item from being picked up.
-
-#### Parameters:
-
-| Parameter | Description | Default | Required |
-|-----------|-------------|---------|----------|
-| `item` | The key of the item that needs to be picked up. Same as in /give |  | true |
-
-```yaml
-pickup_item: item=erethon:fancy_sword
-```
-
-```yaml
-pickup_item:
-  item: 'erethon:fancy_sword' # Needs to be quoted due to the colon.
-  cancel: true
 ```
 
 ## server_command
