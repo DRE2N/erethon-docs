@@ -3,8 +3,57 @@ title: Dialoge
 sidebar_position: 7
 ---
 
+Dialoge ermöglichen interaktive Gespräche zwischen dem Spieler und NPCs. Sie bestehen aus verschiedenen Stufen, in denen der Spieler optional Entscheidungen treffen kann, die den Verlauf des Gesprächs beeinflussen.
+Entscheidungen (`options`) sind dabei in-game anklickbar. 
 
-## Beispiel
+### Übersetzung
+Dialoge unterstützen mehrere Sprachen mithilfe des `QTranslatable`-Systems.
+
+Dabei werden Texte in mehreren Sprachen wie folgt definiert:
+
+`<Sprachen-Key>=<Text>;<Key>=<Text>`
+
+also beispielsweise:
+
+`en=Hello;de=Hallo`
+
+Dies funktioniert. sowohl in den Nachrichten selbst, als auch für die Optionen.
+
+### Nachrichten
+
+Für Dialog-Nachrichten kann eine Zeit festgelegt werden, die angibt, wie lange die Nachricht angezeigt wird, bevor automatisch zur nächsten Nachricht gewechselt wird.
+Dies geschieht hinter dem `;` und ist in Ticks (20 Ticks = 1 Sekunde)
+
+**Beispiel:**
+```yaml
+messages:
+  - "en=Welcome to our ancient library, traveler.;de=Willkommen in unserer alten Bibliothek, Reisender.;20"
+  - "en=I am the keeper of knowledge here. How may I assist you?;de=Ich bin der Hüter des Wissens hier. Wie kann ich euch helfen?;30"
+```
+Hier wird die erste Nachricht für 2 Sekunden, die zweite für drei Sekunden angezeigt.
+
+### Optionen
+Dialog-Optionen nutzen einen vertikalen Strich `|` als Trennzeichen.
+Folgende Optionen sind verfügbar:
+* `text` - Der angezeigte Text der Option, unterstützt mehrsprachige Texte.
+* `next` - Die ID der nächsten Stage, zu der gewechselt wird.
+* `hint` - Ein Hinweistext, der dem Spieler zusätzliche Informationen zur Option gibt. Dieser wird beim Hovern angezeigt.
+
+**Beispiel:**
+```yaml
+options:
+  - "text=en=Tell me about this library;de=Erzählt mir von dieser Bibliothek|next=1|hint=en=Learn about the library's history;de=Erfahrt mehr über die Geschichte der Bibliothek"
+  - "text=en=What books do you have?;de=Welche Bücher habt ihr?|next=2|hint=en=Browse the collection;de=Durchstöbert die Sammlung"
+  - "text=en=I'm looking for something specific;de=Ich suche etwas Bestimmtes|next=3|hint=en=Ask for help finding books;de=Bittet um Hilfe beim Finden von Büchern"
+  - "text=en=Thank you, goodbye;de=Danke, auf Wiedersehen|hint=en=End the conversation;de=Beendet das Gespräch"
+```
+Erstellt vier Optionen:
+1. Die erste Option wechselt zur Dialog-Stage 1 (Bibliotheksgeschichte).
+2. Die zweite Option wechselt zur Dialog-Stage 2 (Buchsammlung).
+3. Die dritte Option wechselt zur Dialog-Stage 3 (Spezifische Suche).
+4. Die vierte Option beendet das Gespräch, da keine Dialog-Stage angegeben ist.
+
+# Beispiel-Dialog
 ```yaml
 sender:
   de: Bibliothekar
