@@ -153,6 +153,26 @@ group_size:
   max: 5
 ```
 
+## has_currency
+Checks if the player has a certain amount of a specific currency.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `amount` | The amount of the currency to check for |  | true |
+| `currency` | The name of the currency to check. Defaults to 'herone'. |  | false |
+
+```yaml
+has_currency: amount=100
+```
+
+```yaml
+has_currency:
+  currency: herone
+  amount: 100
+```
+
 ## health
 This condition is successful if the player's health is within the specified range.
 
@@ -229,26 +249,6 @@ This condition is successful if all of its conditions are not successful.
 inverted:
   conditions:
   - event_state: id=example; state=disabled
-```
-
-## job_level
-Checks if a player has a certain level in a job. Requires JobsXL to be installed.
-
-#### Parameters:
-
-| Parameter | Description | Default | Required |
-|-----------|-------------|---------|----------|
-| `job` | The name of the job that the player must have a certain level in. |  | true |
-| `level` | The level that the player must have in the specified job. |  | true |
-
-```yaml
-job_level: job=Miner; level=5
-```
-
-```yaml
-job_level:
-  job: Miner
-  level: 5
 ```
 
 ## location

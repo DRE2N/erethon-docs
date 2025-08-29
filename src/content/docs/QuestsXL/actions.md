@@ -64,16 +64,36 @@ Add participation to an event.
 | Parameter | Description | Default | Required |
 |-----------|-------------|---------|----------|
 | `amount` | The amount of participation to add | 1 | false |
-| `id` | The ID of the event to participate in |  | true |
+| `id` | The ID of the event to participate in. Defaults to the top parent event if not specified. |  | false |
 
 ```yaml
-event_participation: id=example_event; amount=1
+event_participation: amount=1
 ```
 
 ```yaml
 event_participation:
   id: example_event
   amount: 1
+```
+
+## give_currency
+Gives the player a currency.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `amount` | The amount of the currency to give. e.g. `100` |  | true |
+| `currency` | The internal name of the currency to give. Default: `herone` |  | false |
+
+```yaml
+give_currency: currency=herone; amount=100
+```
+
+```yaml
+give_currency:
+  currency: herone
+  amount: 100
 ```
 
 ## give_item
@@ -114,28 +134,6 @@ hide_ibc: id=example_collection
 ```yaml
 hide_ibc:
   id: example_collection
-```
-
-## job_exp
-Gives the player job experience.
-
-#### Parameters:
-
-| Parameter | Description | Default | Required |
-|-----------|-------------|---------|----------|
-| `chance` | The chance of the action being executed. 1 is 100% chance, 0 is 0% chance | 1 | false |
-| `max` | The maximum amount of experience to give |  | true |
-| `min` | The minimum amount of experience to give |  | true |
-
-```yaml
-job_exp: min=1; max=10; chance=0.5
-```
-
-```yaml
-job_exp:
-  min: 1
-  max: 10
-  chance: 0.5
 ```
 
 ## message
@@ -185,11 +183,11 @@ Sets the display text of an objective for a player. Shown in the sidebar (right 
 
 | Parameter | Description | Default | Required |
 |-----------|-------------|---------|----------|
-| `id` | The ID of the quest or event to set the objective for |  | true |
+| `id` | The ID of the quest or event to set the objective for. Defaults to the top parent if not specified. |  | false |
 | `text` | The text to display, empty to clear |   | false |
 
 ```yaml
-objective_display: id=example_quest; text=Hello!
+objective_display:  text=Hello - %progress%/%goal%
 ```
 
 ```yaml
@@ -269,6 +267,26 @@ play_dialogue: dialogue=example_dialogue
 ```yaml
 dialogue:
   id: example_dialogue
+```
+
+## remove_currency
+Removes a currency from the player's balance. It is recommend to check for the condition `has_currency` before using this action, as balance can not be negative.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `amount` | The amount of the currency to give. e.g. `100` |  | true |
+| `currency` | The internal name of the currency to give. Default: `herone` |  | false |
+
+```yaml
+remove_currency: currency=herone; amount=100
+```
+
+```yaml
+remove_currency:
+  currency: herone
+  amount: 100
 ```
 
 ## repeat
@@ -390,7 +408,7 @@ Sets the event that the player is currently tracking (e.g. shown in the sidebar)
 
 | Parameter | Description | Default | Required |
 |-----------|-------------|---------|----------|
-| `event` | ID of the event to set as the tracked event. |  | true |
+| `event` | ID of the event to set as the tracked event. Use `clear` to clear the tracked event. |  | false |
 | `priority` | Priority. Higher values equal a higher priority | 1 | false |
 
 ```yaml
@@ -411,7 +429,7 @@ Sets the quest that the player is currently tracking (e.g. shown in the sidebar)
 | Parameter | Description | Default | Required |
 |-----------|-------------|---------|----------|
 | `priority` | Priority. Higher values equal a higher priority | 1 | false |
-| `quest` | ID of the quest to set as the tracked quest. |  | true |
+| `quest` | ID of the quest to set as the tracked quest. |  | false |
 
 ```yaml
 set_tracked_event: event=example_event
@@ -439,6 +457,48 @@ show_ibc: ibc=example_collection
 ```yaml
 show_ibc:
   ibc: example_collection
+```
+
+## spawn_mob
+Spawns a mob at a specified location.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `level` | Override the mob's level. Default: -1 (no override) |  | false |
+| `location` | The QLocation to spawn the mob at |  | true |
+| `mob` | The ID of the mob to spawn |  | true |
+
+```yaml
+spawn_mob: mob=bandit; x=~30; y=64; z=~-15; level=5
+```
+
+```yaml
+spawn_mob:
+  mob: bandit
+  location:
+    x: 1
+    y: 2
+    z: 3
+```
+
+## spawner
+Triggers a spawner to spawn its mobs.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `spawner` | The ID of the spawner to trigger |  | true |
+
+```yaml
+spawner: spawner=bandit_spawner_1
+```
+
+```yaml
+spawner:
+  spawner: bandit_spawner_1
 ```
 
 ## stage

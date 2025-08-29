@@ -31,23 +31,98 @@ Mithilfe der ``stage``-Action ist es auch möglich, die Stage eines *anderen* Ev
 
 # Beispiel-Datei
 
-Im Folgen eine sehr einfache Beispieldatei für ein Event:
+Im Folgen eine Beispieldatei für ein Event:
 ```yaml
-startLocation: # Position des Events in der Welt
+startLocation:
   world: Erethon
-  x: 1337
-  y: 69
-  z: 420
-cooldown: 600 # Cooldown in Sekunden, bis das Event wieder spawnen kann. 
-range: 32 # Größe des Events. Siehe oben bei der Begriffserklärung.
-startConditions: # Diese Conditions müssen erfüllt sein, um das Event zu starten.
-state: # Diese Sektion dient zum Speichern des Event-Status und sollte nicht geändert werden.
-  state: NOT_STARTED
+  x: 2492
+  y: 21
+  z: 310
+cooldown: 300
+range: 20
+displayName: Banditendorf
 rewards:
-  0: # Benötigte Event-Participation, um diese Actions auszuführen.
-    # Actions
-onUpdate:
- # Actions hier werden bei jedem Update (standardmäßig 5 Sekunden) des Events ausgeführt.
+  '5':
+  - 'message: message=<green>Yay! Du hast min. 5 Participation erreicht!'
+  - 'give_item: item=minecraft:diamond_sword; amount=2; chance=100'
+  '1':
+    message:
+      message: <red>Leider hast du nur 1 Participation erreicht.
+giveAllRewards: false
 stages:
- # Wie Quests
+  '0':
+    onStart:
+      set_tracked_event:
+        event: T1_Banditendorf_Arvis
+        priority: 3
+      message:
+        message: '<red>Banditenanführer: Greift an!'
+      objective_display:
+        text: 'Bekämpfe Banditen: <gold>0<dark_gray>/<gold>6'
+      repeat:
+        delay: 100 # Zwischen den Wiederholungen vergehen 5 Sekunden (100 Ticks)
+        repetitions: 1 # Wir wollen 6 Mobs spawnen
+        actions: # Wir definieren die Aktionen, die wiederholt werden
+          - 'spawn_mob: x=~0; y=~0; z=~0; randomxz=5; id=T1_Bandit_Axt'
+          - 'spawn_mob: x=~0; y=~0; z=~0; randomxz=4; id=T1_Bandit_Armbrust'
+          - 'spawn_mob: x=~0; y=~0; z=~0; randomxz=5; id=T1_Bandit_Schwert'
+    # Die Ziele, die die Spieler erreichen müssen, um die Stage abzuschließen
+    objectives:
+      kill_mob:
+        mobs:
+        - T1_Bandit_Armbrust
+        - T1_Bandit_Axt
+        - T1_Bandit_Schwert
+        goal: 6
+        onProgress:
+        - 'objective_display: text=Besiege Banditen: <gold>%progress%<dark_gray>/<gold>%goal%'
+        - 'event_participation: amount=1'
+    onFinish: # Nachdem die Stage abgeschlossen wurde, führen wir diese Aktionen aus
+      - 'message: message=<red>Banditenanführer: Grr, nächstes Mal bekommst du uns
+        nicht!'
+  '1': # Die zweite Stage
+    onStart:
+      message:
+        message: <red>Die zweite Welle der Angreifer ist da!
+      objective_display:
+        text: 'Bekämpfe  Banditen: <gold>0<dark_gray>/<gold>6'
+      repeat:
+        delay: 10 # In ticks
+        repetitions: 5 # Es werden 6 Mobs gespawnt
+        actions:
+        - 'spawn_mob: x=~0; y=~0; z=~0; randomxz=6; id=T1_Bandit_Axt'
+    objectives:
+      kill_mob:
+        mobs:
+        - T1_Bandit_Axt
+        goal: 6
+        onProgress:
+        - 'objective_display: text=Besiege Banditen: <gold>%progress%<dark_gray>/<gold>%goal%'
+        - 'event_participation: amount=1'
+  '2': # Die dritte Stage
+    onStart:
+      message:
+        message: <red>Der Banditenanführer ist da!
+      objective_display:
+        text: Besiege den Banditenanführer
+      repeat:
+        delay: 0 # Zwischen den Wiederholungen vergehen 0 Sekunden
+        repetitions: 0 # Wir wollen 5 Mobs spawnen
+        actions:
+        - 'spawn_mob: x=~0; y=~0; z=~0; randomxz=3; id=T1_Banditenanführer'
+        - 'spawn_mob: x=~0; y=~0; z=~0; randomxz=6; id=T1_Bandit_Schwert'
+        - 'spawn_mob: x=~0; y=~0; z=~0; randomxz=4; id=T1_Bandit_Schwert'
+        - 'spawn_mob: x=~0; y=~0; z=~0; randomxz=7; id=T1_Bandit_Schwert'
+        - 'spawn_mob: x=~0; y=~0; z=~0; randomxz=2; id=T1_Bandit_Schwert'
+    objectives:
+      kill_mob:
+        mobs:
+        - T1_Banditenanführer
+        goal: 1
+        onProgress:
+        - 'event_participation: amount=1'
+    onFinish:
+    - 'message: message=<green>Du hast das Banditendorf gemeistert!'
+    - 'set_tracked_event: event=clear'
+
 ```

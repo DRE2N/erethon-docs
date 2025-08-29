@@ -128,26 +128,6 @@ instant:
 instant:
 ```
 
-## job_exp
-The player has to gain a certain amount of job experience.
-
-#### Parameters:
-
-| Parameter | Description | Default | Required |
-|-----------|-------------|---------|----------|
-| `amount` | The amount of experience that needs to be gained. | 1 | false |
-| `reason` | The reason for the experience gain. One of `command`, `crafting`, `dungeon`, `item`, `mob`, `quest`, `unknown` | `crafting` | false |
-
-```yaml
-job_exp: amount=100
-```
-
-```yaml
-job_exp:
-  amount: 100
-  reason: mob
-```
-
 ## jump
 This objective is completed when the player jumps.
 
@@ -162,6 +142,27 @@ jump:
 
 ```yaml
 jump:
+```
+
+## kill_mob
+Fulfilled when the player kills a specific mob. Allows defining multiple mobs.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `mobs` | The IDs of the mobs that count towards this objective |  | true |
+| `radius` | If set and on an event, the mob must be within the specified radius of the event to count. Default: -1 (no radius check) |  | false |
+
+```yaml
+kill_mob: mob=bandit,goblin; radius=3
+```
+
+```yaml
+kill_mob:
+  mobs:
+    - bandit
+    - goblin
 ```
 
 ## leave_region
