@@ -128,6 +128,26 @@ instant:
 instant:
 ```
 
+## interact_mob
+Objective that requires the player to interact with a specific mob. Currently only right-clicking is supported.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `mos` | The ID of the mob that counts towards this objective |  | true |
+| `tag` | If set, only the mob with the specified tag will count towards this objective |  | false |
+
+```yaml
+interact_mob: mob=bandit
+```
+
+```yaml
+interact_mob:
+  mob: bandit
+  tag: quest_bandit_1
+```
+
 ## jump
 This objective is completed when the player jumps.
 
