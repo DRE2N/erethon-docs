@@ -61,6 +61,25 @@ completed_quest:
   quest: example_quest
 ```
 
+## event_range
+Checks if the objective is within the range of a specified event.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `bonusRange` | An additional range to add to the event's defined range. | 0 | false |
+| `event` | The ID of the event. |  | false |
+
+```yaml
+event_state: event=example_event; bonusRange=10
+```
+
+```yaml
+event_range:
+  event: example_event
+```
+
 ## event_state
 Checks if the specified event is in the specified state.
 
@@ -120,6 +139,7 @@ Checks if a certain global score is larger or equal to a value. Global scores ar
 
 | Parameter | Description | Default | Required |
 |-----------|-------------|---------|----------|
+| `mode` | The mode of the condition. Can be 'at_least' or 'at_most', 'exactly' or 'unset'. | at_least | false |
 | `score` | The name of the global score. |  | true |
 | `value` | The value the score should be larger or equal to. | 1 | false |
 
@@ -352,6 +372,7 @@ Checks if a player has at least a certain score. Per-player
 
 | Parameter | Description | Default | Required |
 |-----------|-------------|---------|----------|
+| `mode` | The mode of the condition. Can be 'at_least' or 'at_most', 'exactly' or 'unset'. | at_least | false |
 | `score` | The name of the score. |  | true |
 | `value` | The value the score should be larger or equal to. | 1 | false |
 

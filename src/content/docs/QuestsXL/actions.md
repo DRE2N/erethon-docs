@@ -136,25 +136,6 @@ hide_ibc:
   id: example_collection
 ```
 
-## hide_mob
-Hides tagged mobs. They have to be set to `instanceable` for this to work.
-
-#### Parameters:
-
-| Parameter | Description | Default | Required |
-|-----------|-------------|---------|----------|
-| `mode` | The show mode. Possible values: ALL, SELF, GROUP, EVENT_IN_RANGE, EVENT_PARTICIPANTS. Default is ALL |  | false |
-| `tag` | The mob tag to show |  | false |
-
-```yaml
-hide_mob: tag=bandit; mode=event_in_range
-```
-
-```yaml
-hide_mob:
-  tag: bandit
-```
-
 ## message
 Sends a message to the player or all event participants.
 
@@ -373,7 +354,7 @@ run_as:
 ```
 
 ## run_command
-Runs a command, optionally with full permissions (op) or as console. By default, the command is run as the player.
+Runs a command, optionally with full permissions (op) or as console. By default, the command is run as the player. Use %player% in the command to refer to the player's name.
 
 #### Parameters:
 
@@ -418,6 +399,58 @@ score:
   value: 1
   operation: add
   scope: event
+```
+
+## set_block
+Sets a block at a specific location to a specific material.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `instanced` | If true, only the Quester will see the block change. | false | false |
+| `location` | The location where the block will be set |  | true |
+| `material` | The material to set the block to |  | true |
+
+```yaml
+set_block: location: x=0; y=64; z=0; material=STONE
+```
+
+```yaml
+set_block:
+  location:
+    x: 0
+    y: 64
+    z: 0
+    world: Erethon
+  material: DIAMOND_BLOCK
+  instanced: true # 
+```
+
+## set_block
+Sets a block at a specific location to a specific material.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `pitch` | The pitch of the sound | 1.0 | false |
+| `sound` | The sound to play |  | true |
+| `volume` | The volume of the sound | 1.0 | false |
+
+```yaml
+set_block: location: x=0; y=64; z=0; material=STONE
+```
+
+```yaml
+set_block:
+  location:
+    x: 0
+    y: 64
+    z: 0
+    world: Erethon
+  material: DIAMOND_BLOCK
+  instanced: true # 
 ```
 
 ## set_tracked_event
@@ -478,72 +511,6 @@ show_ibc:
   ibc: example_collection
 ```
 
-## show_mob
-Makes tagged mobs visible. They have to be set to `instanceable` for this to work.
-
-#### Parameters:
-
-| Parameter | Description | Default | Required |
-|-----------|-------------|---------|----------|
-| `mode` | The show mode. Possible values: ALL, SELF, GROUP, EVENT_IN_RANGE, EVENT_PARTICIPANTS. Default is ALL |  | false |
-| `tag` | The mob tag to show |  | false |
-
-```yaml
-show_mob: tag=bandit; mode=event_participants
-```
-
-```yaml
-show_mob:
-  tag: bandit
-```
-
-## spawn_mob
-Spawns a mob at a specified location.
-
-#### Parameters:
-
-| Parameter | Description | Default | Required |
-|-----------|-------------|---------|----------|
-| `homeRange` | Set the home range of the mob. The mob will try to stay within this range of the spawn location. Default: -1 (no home) |  | false |
-| `level` | Override the mob's level. Default: -1 (no override) |  | false |
-| `location` | The QLocation to spawn the mob at |  | true |
-| `mob` | The ID of the mob to spawn |  | true |
-| `tag` | Tag the spawned mob with an ID to be able to reference it later |  | false |
-
-```yaml
-spawn_mob: mob=bandit; x=~30; y=64; z=~-15; level=5
-```
-
-```yaml
-spawn_mob:
-  mob: bandit
-  tag: guard_leader
-  level: 69
-  homeRange: 32
-  location:
-    x: 1
-    y: 2
-    z: 3
-```
-
-## spawner
-Triggers a spawner to spawn its mobs.
-
-#### Parameters:
-
-| Parameter | Description | Default | Required |
-|-----------|-------------|---------|----------|
-| `spawner` | The ID of the spawner to trigger |  | true |
-
-```yaml
-spawner: spawner=bandit_spawner_1
-```
-
-```yaml
-spawner:
-  spawner: bandit_spawner_1
-```
-
 ## stage
 Changes the current stage of a quest or event. This is a powerful actin that can be used for branching quests or events. 
 For example, you could create a dialogue that gives the player a choice, and depending on the choice, you could set a different stage.
@@ -601,6 +568,25 @@ start_quest: quest=example_quest
 ```yaml
 start_quest:
   quest: example_quest
+```
+
+## stop_event
+Stops an event.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `event` | The ID of the event to stop |  | true |
+| `failed` | If true, the event will be marked as failed instead of completed | false | false |
+
+```yaml
+stop_event: event=example_event
+```
+
+```yaml
+stop_event:
+  event: example_event
 ```
 
 ## teleport
@@ -670,28 +656,5 @@ add_velocity:
   x: 1
   y: 2
   z: 3
-```
-
-## walk_mob
-Makes a mob walk to a location. This will temporarily override any AI goals the mob has.
-
-#### Parameters:
-
-| Parameter | Description | Default | Required |
-|-----------|-------------|---------|----------|
-| `location` | The QLocation to walk to |  | true |
-| `moveHome` | Should the homing location be updated to the new location? Default: false |  | false |
-| `tag` | Tag the spawned mob with an ID to be able to reference it later |  | false |
-
-```yaml
-walk_mob: x=~30; y=64; z=~-15;
-```
-
-```yaml
-walk_mob:
-  location:    x: ~30
-    y: 64
-    z: ~-15
-  moveHome: true
 ```
 

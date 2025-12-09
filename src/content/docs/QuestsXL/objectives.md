@@ -24,6 +24,24 @@ block_interact:
   world: world
 ```
 
+## break_block
+Completed when a specific block is broken.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `block` | The Hephaestus ID of the block that needs to be broken. |  | true |
+
+```yaml
+break_block: block=erethon:fancy_block
+```
+
+```yaml
+break_block:
+  block: 'erethon:fancy_block'
+```
+
 ## breed
 This objective is completed when the player breeds two entities.
 
@@ -62,6 +80,62 @@ chat:
   exactMatch: true
 ```
 
+## complete_event
+Completed when a specific event is completed by the player.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `event` | The ID of the event that needs to be completed to fulfill this objective. |  | true |
+| `minParticipation` | The minimum participation percentage required to complete the objective. | 0 | false |
+
+```yaml
+complete_event: event=dragon_slaying
+```
+
+```yaml
+complete_event:
+  event: 'dragon_slaying'
+  minParticipation: 50
+```
+
+## complete_quest
+Completed when a specific quest is completed.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `quest` | The ID of the quest that needs to be completed to complete this objective. |  | true |
+
+```yaml
+complete_quest: quest=example_quest
+```
+
+```yaml
+complete_quest:
+  quest: 'example_quest'
+```
+
+## consume_item
+An item needs to be consumed to complete this objective. Hephaestus item keys are used. Can be cancelled.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `item` | The key of the item that needs to be consumed. Same as in /give |  | true |
+
+```yaml
+consume_item: item=minecraft:apple
+```
+
+```yaml
+consume_item:
+  item: 'minecraft:apple' # Needs to be quoted due to the colon.
+```
+
 ## death
 This objective is completed when the player dies.
 
@@ -76,6 +150,26 @@ death:
 
 ```yaml
 death:
+```
+
+## drop_item
+Drop an item to complete this objective. Can be cancelled.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `item` | The key of the item that needs to be dropped. Same as in /give |  | true |
+| `remove` | If true, the item will be removed when dropped | false | false |
+
+```yaml
+drop_item: item=erethon:fancy_sword
+```
+
+```yaml
+drop_item:
+  item: 'erethon:fancy_sword' # Needs to be quoted due to the colon.
+  remove: true
 ```
 
 ## enter_region
@@ -128,24 +222,27 @@ instant:
 instant:
 ```
 
-## interact_mob
-Objective that requires the player to interact with a specific mob. Currently only right-clicking is supported.
+## job_craft_item
+
 
 #### Parameters:
 
 | Parameter | Description | Default | Required |
 |-----------|-------------|---------|----------|
-| `mos` | The ID of the mob that counts towards this objective |  | true |
-| `tag` | If set, only the mob with the specified tag will count towards this objective |  | false |
+| `item` | The ID of the item to be crafted. |  | true |
+| `minLevel` | The minimum level of the crafted item. |  | false |
+| `recipe` | The ID of the recipe to be used. |  | false |
 
 ```yaml
-interact_mob: mob=bandit
+job_craft_item: item=erethon:sword; recipe=erethon:sword_recipe; minLevel=2
 ```
 
 ```yaml
-interact_mob:
-  mob: bandit
-  tag: quest_bandit_1
+job_craft_item:
+  item: erethon:sword
+  recipe: erethon:sword_recipe
+  minLevel: 2
+
 ```
 
 ## jump
@@ -164,25 +261,20 @@ jump:
 jump:
 ```
 
-## kill_mob
-Fulfilled when the player kills a specific mob. Allows defining multiple mobs.
+## kill_player
+This objective is completed by killing another player.
 
 #### Parameters:
 
 | Parameter | Description | Default | Required |
 |-----------|-------------|---------|----------|
-| `mobs` | The IDs of the mobs that count towards this objective |  | true |
-| `radius` | If set and on an event, the mob must be within the specified radius of the event to count. Default: -1 (no radius check) |  | false |
 
 ```yaml
-kill_mob: mob=bandit,goblin; radius=3
+kill_player:
 ```
 
 ```yaml
-kill_mob:
-  mobs:
-    - bandit
-    - goblin
+kill_player:
 ```
 
 ## leave_region
@@ -238,6 +330,48 @@ login:
 
 ```yaml
 login:
+```
+
+## pickup_item
+This objective is completed when the player picks up a specific item. Can be cancelled, preventing the item from being picked up.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `item` | The key of the item that needs to be picked up. Same as in /give |  | true |
+
+```yaml
+pickup_item: item=erethon:fancy_sword
+```
+
+```yaml
+pickup_item:
+  item: 'erethon:fancy_sword' # Needs to be quoted due to the colon.
+  cancel: true
+```
+
+## place_item
+Completed when a specific item is placed into a container (e.g. chest) and the chest is closed.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `amount` | The amount of items that need to be placed | 1 | false |
+| `consume` | If true, the items will be consumed (removed from the container | false | false |
+| `item` | The key of the item that needs to be placed. Same as in /give |  | true |
+| `location` | If set, the item must be placed in a container at this location |  | false |
+
+```yaml
+place_item: item=erethon:fancy_sword
+```
+
+```yaml
+place_item:
+  item: 'erethon:fancy_sword'
+  amount: 4
+  consume: true
 ```
 
 ## server_command
@@ -304,6 +438,29 @@ sneak:
 
 ```yaml
 sneak:
+```
+
+## use_item
+Completed when a item is used (right-clicked).
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `amount` | The amount of items that need to be in the used stack. Objective progress will be increased by amount | 1 | false |
+| `consume` | If true, the items will be consumed on use | false | false |
+| `item` | The key of the item that needs to be used. Same as in /give |  | true |
+| `location` | If set, the item must be used on the block at this location |  | false |
+
+```yaml
+use_item: item=erethon:fancy_sword
+```
+
+```yaml
+place_item:
+  item: 'erethon:bread'
+  amount: 8
+  consume: true
 ```
 
 ## wait
