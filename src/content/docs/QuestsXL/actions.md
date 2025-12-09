@@ -136,6 +136,25 @@ hide_ibc:
   id: example_collection
 ```
 
+## hide_mob
+Hides tagged mobs. They have to be set to `instanceable` for this to work.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `mode` | The show mode. Possible values: ALL, SELF, GROUP, EVENT_IN_RANGE, EVENT_PARTICIPANTS. Default is ALL |  | false |
+| `tag` | The mob tag to show |  | false |
+
+```yaml
+hide_mob: tag=bandit; mode=event_in_range
+```
+
+```yaml
+hide_mob:
+  tag: bandit
+```
+
 ## message
 Sends a message to the player or all event participants.
 
@@ -287,6 +306,28 @@ remove_currency: currency=herone; amount=100
 remove_currency:
   currency: herone
   amount: 100
+```
+
+## remove_mob
+Removes a mob with the specified tag from the world.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `mobs` | The tags of the mobs to remove |  | true |
+| `range` | The range around the user to remove mobs from | 32 | false |
+
+```yaml
+hide_mob: mobs=bandit; range=30
+```
+
+```yaml
+remove_mob:
+  mobs:
+    - bandit
+    - goblin
+  range: 50
 ```
 
 ## repeat
@@ -511,6 +552,73 @@ show_ibc:
   ibc: example_collection
 ```
 
+## show_mob
+Makes tagged mobs visible. They have to be set to `instanceable` for this to work.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `mode` | The show mode. Possible values: ALL, SELF, GROUP, EVENT_IN_RANGE, EVENT_PARTICIPANTS. Default is ALL |  | false |
+| `tag` | The mob tag to show |  | false |
+
+```yaml
+show_mob: tag=bandit; mode=event_participants
+```
+
+```yaml
+show_mob:
+  tag: bandit
+```
+
+## spawn_mob
+Spawns a mob at a specified location.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `amount` | The amount of mobs to spawn | 1 | false |
+| `homeRange` | Set the home range of the mob. The mob will try to stay within this range of the spawn location. Default: -1 (no home) |  | false |
+| `level` | Override the mob's level. Default: -1 (no override) |  | false |
+| `location` | The QLocation to spawn the mob at |  | true |
+| `mob` | The ID of the mob to spawn |  | true |
+| `tag` | Tag the spawned mob with an ID to be able to reference it later |  | false |
+
+```yaml
+spawn_mob: mob=bandit; x=~30; y=64; z=~-15; level=5
+```
+
+```yaml
+spawn_mob:
+  mob: bandit
+  tag: guard_leader
+  level: 69
+  homeRange: 32
+  location:
+    x: 1
+    y: 2
+    z: 3
+```
+
+## spawner
+Triggers a spawner to spawn its mobs.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `spawner` | The ID of the spawner to trigger |  | true |
+
+```yaml
+spawner: spawner=bandit_spawner_1
+```
+
+```yaml
+spawner:
+  spawner: bandit_spawner_1
+```
+
 ## stage
 Changes the current stage of a quest or event. This is a powerful actin that can be used for branching quests or events. 
 For example, you could create a dialogue that gives the player a choice, and depending on the choice, you could set a different stage.
@@ -656,5 +764,28 @@ add_velocity:
   x: 1
   y: 2
   z: 3
+```
+
+## walk_mob
+Makes a mob walk to a location. This will temporarily override any AI goals the mob has.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `location` | The QLocation to walk to |  | true |
+| `moveHome` | Should the homing location be updated to the new location? Default: false |  | false |
+| `tag` | Tag the spawned mob with an ID to be able to reference it later |  | false |
+
+```yaml
+walk_mob: x=~30; y=64; z=~-15;
+```
+
+```yaml
+walk_mob:
+  location:    x: ~30
+    y: 64
+    z: ~-15
+  moveHome: true
 ```
 

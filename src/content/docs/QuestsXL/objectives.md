@@ -222,6 +222,26 @@ instant:
 instant:
 ```
 
+## interact_mob
+Objective that requires the player to interact with a specific mob. Currently only right-clicking is supported.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `mos` | The ID of the mob that counts towards this objective |  | true |
+| `tag` | If set, only the mob with the specified tag will count towards this objective |  | false |
+
+```yaml
+interact_mob: mob=bandit
+```
+
+```yaml
+interact_mob:
+  mob: bandit
+  tag: quest_bandit_1
+```
+
 ## job_craft_item
 
 
@@ -259,6 +279,27 @@ jump:
 
 ```yaml
 jump:
+```
+
+## kill_mob
+Fulfilled when the player kills a specific mob. Allows defining multiple mobs.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `mobs` | The IDs of the mobs that count towards this objective |  | true |
+| `radius` | If set and on an event, the mob must be within the specified radius of the event to count. Default: -1 (no radius check) |  | false |
+
+```yaml
+kill_mob: mob=bandit,goblin; radius=3
+```
+
+```yaml
+kill_mob:
+  mobs:
+    - bandit
+    - goblin
 ```
 
 ## kill_player
