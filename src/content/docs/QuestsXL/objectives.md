@@ -206,6 +206,88 @@ enter_region:
   region: region_id
 ```
 
+## faction_create
+Create a faction.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+
+```yaml
+faction_create:
+```
+
+```yaml
+faction_create:
+```
+
+## faction_disband
+Disband a faction.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+
+```yaml
+faction_disband:
+```
+
+```yaml
+faction_disband:
+```
+
+## faction_join
+Objective is completed when the player joins a faction.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+
+```yaml
+faction_join:
+```
+
+```yaml
+faction_join:
+```
+
+## faction_leave
+Objective is completed when the player leaves a faction.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+
+```yaml
+faction_leave:
+```
+
+```yaml
+faction_leave:
+```
+
+## faction_region
+Checks if a quester is currently in a specific faction region.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `region` | The name of the faction region the quester must be in. |  | true |
+
+```yaml
+faction_region: region=example_region
+```
+
+```yaml
+faction_region:
+  region: example_region
+```
+
 ## impossible
 This objective is impossible to complete. It can be used to block progression, for example to only manually progress a stage with the set_stage action
 

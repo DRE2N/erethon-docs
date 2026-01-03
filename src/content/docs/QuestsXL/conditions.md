@@ -119,6 +119,45 @@ event_state:
   state: active
 ```
 
+## faction_building
+Checks if the player's faction has a certain number of a specific building. Only counts active buildings
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `amount` | The amount of this building the faction must have. | 1 | false |
+| `building` | The ID of the building to check for. |  | false |
+
+```yaml
+faction_building: building=town_hall; amount=2
+```
+
+```yaml
+faction_building:
+  building: town_hall
+  amount: 2
+```
+
+## faction_money
+Checks if the player's faction has a certain amount of money in a specified currency.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `amount` | The amount of money the faction must have. |  | true |
+| `currency` | The currency to check the balance of. | herone | false |
+
+```yaml
+faction_money: currency=herone; amount=1000
+```
+
+```yaml
+faction_money:
+  amount: 1000
+```
+
 ## faction_population
 Checks if the faction's population for a level is at least X. Fails too if the quester has no faction.
 
@@ -137,6 +176,24 @@ faction_population
   citizen: 300
   noblemen: 20
   patrician: 96
+```
+
+## faction_region
+Checks if a quester is currently in a specific faction region.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `region` | The name of the faction region the quester must be in. |  | true |
+
+```yaml
+faction_region: region=example_region
+```
+
+```yaml
+faction_region:
+  region: example_region
 ```
 
 ## faction_unrest
@@ -250,6 +307,22 @@ has_currency: amount=100
 has_currency:
   currency: herone
   amount: 100
+```
+
+## has_faction
+Checks if the player is in any faction.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+
+```yaml
+has_faction:
+```
+
+```yaml
+has_faction:
 ```
 
 ## health
