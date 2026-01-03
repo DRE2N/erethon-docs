@@ -288,6 +288,28 @@ dialogue:
   id: example_dialogue
 ```
 
+## play_sound
+Plays a sound to the player.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `pitch` | The pitch of the sound | 1.0 | false |
+| `sound` | The sound to play |  | true |
+| `volume` | The volume of the sound | 1.0 | false |
+
+```yaml
+play_sound: sound=entity.player.levelup
+```
+
+```yaml
+play_sound:
+  sound: entity.player.levelup
+  volume: 1.0
+  pitch: 1.0
+```
+
 ## population_happiness
 Changes the happiness of a population level in the player's faction.
 
@@ -326,6 +348,26 @@ remove_currency: currency=herone; amount=100
 remove_currency:
   currency: herone
   amount: 100
+```
+
+## remove_item
+Removes an item from the player. The item needs to be defined in the Hephaestus item library. <br>You can check if an item exists by using `/give` in Minecraft.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `amount` | The amount of items to remove | 1 | false |
+| `item` | The ID of the item to remove |  | true |
+
+```yaml
+remove_item: item=minecraft:stone; amount=420
+```
+
+```yaml
+remove_item:
+  item: 'minecraft:stone' # The ID needs to be quoted due to the colon
+  amount: 420
 ```
 
 ## remove_mob
@@ -512,32 +554,6 @@ Sets a block at a specific location to a specific material.
 | `instanced` | If true, only the Quester will see the block change. | false | false |
 | `location` | The location where the block will be set |  | true |
 | `material` | The material to set the block to |  | true |
-
-```yaml
-set_block: location: x=0; y=64; z=0; material=STONE
-```
-
-```yaml
-set_block:
-  location:
-    x: 0
-    y: 64
-    z: 0
-    world: Erethon
-  material: DIAMOND_BLOCK
-  instanced: true # 
-```
-
-## set_block
-Sets a block at a specific location to a specific material.
-
-#### Parameters:
-
-| Parameter | Description | Default | Required |
-|-----------|-------------|---------|----------|
-| `pitch` | The pitch of the sound | 1.0 | false |
-| `sound` | The sound to play |  | true |
-| `volume` | The volume of the sound | 1.0 | false |
 
 ```yaml
 set_block: location: x=0; y=64; z=0; material=STONE

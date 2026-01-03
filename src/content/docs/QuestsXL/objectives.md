@@ -600,6 +600,30 @@ sneak:
 sneak:
 ```
 
+## timer
+Special objective. Starts a countdown timer. When all other current objectives of this Quest/Event are completed before the timer runs out, the onComplete actions are executed and the objective is marked as complete. If the timer runs out before all other objectives are completed, the onExpire actions are executed.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `onComplete` | Actions to execute when all other objectives are completed before the timer expires. |  | false |
+| `onExpire` | Actions to execute when the timer expires. |  | false |
+| `time` | The time in seconds for the countdown timer. |  | true |
+
+```yaml
+<no short format>
+```
+
+```yaml
+timer:
+  time: 120 # Time in seconds
+  onExpire:
+    - message: message=You ran out of time!
+  onComplete:
+    - message: message=You completed the objectives in time!
+```
+
 ## use_item
 Completed when a item is used (right-clicked).
 

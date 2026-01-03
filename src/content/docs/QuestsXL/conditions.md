@@ -483,6 +483,26 @@ looking_at:
   block: DIAMOND_BLOCK
 ```
 
+## minecraft_time
+Checks if the in-game time is within a specified range.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `maxTime` | The maximum in-game time in ticks (0-24000). |  | true |
+| `minTime` | The minimum in-game time in ticks (0-24000). |  | true |
+
+```yaml
+minecraft_time: minTime=0 maxTime=12000
+```
+
+```yaml
+minecraft_time:
+  minTime: 0
+  maxTime: 12000
+```
+
 ## mounted
 This condition is successful if the player is mounted on a vehicle.
 
