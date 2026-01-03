@@ -76,6 +76,145 @@ event_participation:
   amount: 1
 ```
 
+## faction_building
+Checks if the player's faction has a certain number of a specific building. Only counts active buildings
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `amount` | The amount of this building the faction must have. | 1 | false |
+| `building` | The ID of the building to check for. |  | false |
+
+```yaml
+faction_building: building=town_hall; amount=2
+```
+
+```yaml
+faction_building:
+  building: town_hall
+  amount: 2
+```
+
+## faction_create
+Create a faction.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+
+```yaml
+faction_create:
+```
+
+```yaml
+faction_create:
+```
+
+## faction_disband
+Disband a faction.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+
+```yaml
+faction_disband:
+```
+
+```yaml
+faction_disband:
+```
+
+## faction_join
+Objective is completed when the player joins a faction.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+
+```yaml
+faction_join:
+```
+
+```yaml
+faction_join:
+```
+
+## faction_leave
+Objective is completed when the player leaves a faction.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+
+```yaml
+faction_leave:
+```
+
+```yaml
+faction_leave:
+```
+
+## faction_money
+Checks if the player's faction has a certain amount of money in a specified currency.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `amount` | The amount of money the faction must have. |  | true |
+| `currency` | The currency to check the balance of. | herone | false |
+
+```yaml
+faction_money: currency=herone; amount=1000
+```
+
+```yaml
+faction_money:
+  amount: 1000
+```
+
+## faction_region
+Checks if a quester is currently in a specific faction region.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `region` | The name of the faction region the quester must be in. |  | true |
+
+```yaml
+faction_region: region=example_region
+```
+
+```yaml
+faction_region:
+  region: example_region
+```
+
+## faction_region
+Checks if a quester is currently in a specific faction region.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `region` | The name of the faction region the quester must be in. |  | true |
+
+```yaml
+faction_region: region=example_region
+```
+
+```yaml
+faction_region:
+  region: example_region
+```
+
 ## give_currency
 Gives the player a currency.
 
@@ -116,6 +255,22 @@ give_item:
   item: 'minecraft:stone' # The ID needs to be quoted due to the colon
   amount: 420
   chance: 69
+```
+
+## has_faction
+Checks if the player is in any faction.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+
+```yaml
+has_faction:
+```
+
+```yaml
+has_faction:
 ```
 
 ## hide_ibc
@@ -288,6 +443,26 @@ dialogue:
   id: example_dialogue
 ```
 
+## population_happiness
+Changes the happiness of a population level in the player's faction.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `happiness` | The amount to change the happiness by (can be negative). |  | true |
+| `level` | The population level to change the happiness of (e.g., citizen, beggar, patrician). |  | true |
+
+```yaml
+population_happiness: level=citizen; happiness=5.0
+```
+
+```yaml
+population_happiness:
+  level: citizen
+  happiness: 5.0
+```
+
 ## remove_currency
 Removes a currency from the player's balance. It is recommend to check for the condition `has_currency` before using this action, as balance can not be negative.
 
@@ -328,6 +503,24 @@ remove_mob:
     - bandit
     - goblin
   range: 50
+```
+
+## remove_quest
+Removes a quest from the player. This will delete all progress made on the quest.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `quest` | The ID of the quest to remove |  | true |
+
+```yaml
+remove_quest: quest=example_quest
+```
+
+```yaml
+remove_quest:
+  quest: example_quest
 ```
 
 ## repeat
@@ -392,6 +585,28 @@ run_as:
   value: 5
   actions:
     - 'message: message=Yeet'
+```
+
+## run_command
+Runs a command, optionally with full permissions (op) or as console. By default, the command is run as the player. Use %player% in the command to refer to the player's name.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `command` | The command to run, without the / |  | true |
+| `console` | Whether to run the command as console | false | false |
+| `op` | Whether to run the command as an op | false | false |
+
+```yaml
+run_command: command=stop; console=true # Shut down the server
+```
+
+```yaml
+run_command:
+  command: example_command
+  op: false
+  console: false
 ```
 
 ## run_command

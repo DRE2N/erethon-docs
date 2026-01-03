@@ -21,6 +21,25 @@ active_quest:
   quest: example_quest
 ```
 
+## alliance
+Checks if the player is in a specific alliance or in any alliance.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `alliance` | The ID of the alliance the player must be in. |  | false |
+| `any` | If true, the player can be in any alliance. `alliance` is not required if this is set to `true`. |  | false |
+
+```yaml
+alliance: alliance=1
+```
+
+```yaml
+alliance:
+  any: true
+```
+
 ## attribute
 This condition is successful if the player's attribute value is within a certain range.
 
@@ -98,6 +117,46 @@ event_state: event=example_event; state=active
 event_state:
   event: example_event
   state: active
+```
+
+## faction_population
+Checks if the faction's population for a level is at least X. Fails too if the quester has no faction.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `<level> = amount` | Population levels are specified by using the level name as a key, e.g. `population: beggar=10; noblemen=5;`  |  | true |
+
+```yaml
+faction_population: beggar=10
+```
+
+```yaml
+faction_population
+  citizen: 300
+  noblemen: 20
+  patrician: 96
+```
+
+## faction_unrest
+Checks if the player's faction's unrest level is within the specified range.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `maximum` | The maximum unrest level (inclusive). |  | false |
+| `minimum` | The minimum unrest level (inclusive). |  | false |
+
+```yaml
+faction_unrest: minimum=10 maximum=50
+```
+
+```yaml
+faction_unrest:
+  minimum: 10
+  maximum: 50
 ```
 
 ## fire
@@ -269,6 +328,24 @@ This condition is successful if all of its conditions are not successful.
 inverted:
   conditions:
   - event_state: id=example; state=disabled
+```
+
+## job
+Checks if the player has a specific job.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `job` | The ID of the job to check for. |  | true |
+
+```yaml
+job: job=armorsmith
+```
+
+```yaml
+job:
+  job: armorsmith
 ```
 
 ## location
@@ -477,6 +554,26 @@ sprinting:
 sprinting:
 ```
 
+## stage
+Checks if the player is on a specific stage of a quest.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `quest` | The ID of the quest. |  | true |
+| `stage` | The stage the quest must be on. |  | true |
+
+```yaml
+stage: quest=example_quest stage=2
+```
+
+```yaml
+stage:
+  quest: example_quest
+  stage: 2
+```
+
 ## time
 Checks if the current time is between min and max time.
 
@@ -522,6 +619,24 @@ velocity:
   x: 0.5
   y: 0.5
   z: 0.5
+```
+
+## war_phase
+Checks if the current war phase matches the specified phase.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `phase` | The war phase to check for. One of `capital`, `regular`, `scoring`, `peace` |  | true |
+
+```yaml
+war_phase: phase=scoring
+```
+
+```yaml
+war_phase:
+  phase: peace
 ```
 
 ## wet

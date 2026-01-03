@@ -31,15 +31,15 @@ Completed when a specific block is broken.
 
 | Parameter | Description | Default | Required |
 |-----------|-------------|---------|----------|
-| `block` | The Hephaestus ID of the block that needs to be broken. |  | true |
+| `block` | The Hephaestus ID(s) of the block(s) that need to be broken (comma-separated for multiple types). |  | true |
 
 ```yaml
-break_block: block=erethon:fancy_block
+break_block: block=erethon:fancy_block,minecraft:stone,minecraft:dirt
 ```
 
 ```yaml
 break_block:
-  block: 'erethon:fancy_block'
+  block: 'erethon:fancy_block,minecraft:stone'
 ```
 
 ## breed
@@ -49,15 +49,31 @@ This objective is completed when the player breeds two entities.
 
 | Parameter | Description | Default | Required |
 |-----------|-------------|---------|----------|
-| `entityType` | The entity type that has to be bred |  | true |
+| `entityTypes` | The entity type(s) that have to be bred (comma-separated for multiple types) |  | true |
 
 ```yaml
-breed: entity_type=pig
+breed: entity_type=pig,cow,sheep
 ```
 
 ```yaml
 breed:
-  entity_type: cow
+  entity_type: cow,pig,sheep
+```
+
+## change_alliance
+Objective completed when the player changes their alliance or initially selects one.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+
+```yaml
+change_alliance:
+```
+
+```yaml
+change_alliance:
 ```
 
 ## chat
@@ -125,15 +141,15 @@ An item needs to be consumed to complete this objective. Hephaestus item keys ar
 
 | Parameter | Description | Default | Required |
 |-----------|-------------|---------|----------|
-| `item` | The key of the item that needs to be consumed. Same as in /give |  | true |
+| `item` | The key(s) of the item(s) that need to be consumed (comma-separated for multiple items). Same as in /give |  | true |
 
 ```yaml
-consume_item: item=minecraft:apple
+consume_item: item=minecraft:apple,minecraft:bread
 ```
 
 ```yaml
 consume_item:
-  item: 'minecraft:apple' # Needs to be quoted due to the colon.
+  item: 'minecraft:apple,minecraft:bread' # Needs to be quoted due to the colon.
 ```
 
 ## death
@@ -380,15 +396,15 @@ This objective is completed when the player picks up a specific item. Can be can
 
 | Parameter | Description | Default | Required |
 |-----------|-------------|---------|----------|
-| `item` | The key of the item that needs to be picked up. Same as in /give |  | true |
+| `item` | The key(s) of the item(s) that need to be picked up (comma-separated for multiple items). Same as in /give |  | true |
 
 ```yaml
-pickup_item: item=erethon:fancy_sword
+pickup_item: item=erethon:fancy_sword,minecraft:diamond
 ```
 
 ```yaml
 pickup_item:
-  item: 'erethon:fancy_sword' # Needs to be quoted due to the colon.
+  item: 'erethon:fancy_sword,minecraft:diamond' # Needs to be quoted due to the colon.
   cancel: true
 ```
 
@@ -490,16 +506,16 @@ Completed when a item is used (right-clicked).
 |-----------|-------------|---------|----------|
 | `amount` | The amount of items that need to be in the used stack. Objective progress will be increased by amount | 1 | false |
 | `consume` | If true, the items will be consumed on use | false | false |
-| `item` | The key of the item that needs to be used. Same as in /give |  | true |
+| `item` | The key(s) of the item(s) that need to be used (comma-separated for multiple items). Same as in /give |  | true |
 | `location` | If set, the item must be used on the block at this location |  | false |
 
 ```yaml
-use_item: item=erethon:fancy_sword
+use_item: item=erethon:fancy_sword,minecraft:diamond_sword
 ```
 
 ```yaml
-place_item:
-  item: 'erethon:bread'
+use_item:
+  item: 'erethon:bread,minecraft:apple'
   amount: 8
   consume: true
 ```
