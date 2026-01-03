@@ -168,6 +168,27 @@ death:
 death:
 ```
 
+## deliver_item
+Deliver a specific item to a mob to complete this objective.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `amount` | The amount of the item that needs to be delivered. | 1 | false |
+| `item` | The Hephaestus ID of the item that needs to be delivered. |  | true |
+| `mob` | The ID of the mob to which the item must be delivered. |  | true |
+
+```yaml
+deliver_item: item=minecraft:diamond; amount=5
+```
+
+```yaml
+deliver_item:
+  item: minecraft:diamond # The item that needs to be delivered.
+  amount: 5               # The amount of the item that needs to be delivered.
+```
+
 ## drop_item
 Drop an item to complete this objective. Can be cancelled.
 

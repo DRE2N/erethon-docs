@@ -62,6 +62,26 @@ attribute:
   max_value: 20
 ```
 
+## character_level
+Checks if the player's selected character's level is within the specified range.
+
+#### Parameters:
+
+| Parameter | Description | Default | Required |
+|-----------|-------------|---------|----------|
+| `maxLevel` | The maximum character level (inclusive). | a lot | false |
+| `minLevel` | The minimum character level (inclusive). | 0 | false |
+
+```yaml
+character_level: minLevel=5; maxLevel=10
+```
+
+```yaml
+character_level:
+  minLevel: 5
+  maxLevel: 10
+```
+
 ## completed_quest
 Checks if the player has the specified quest completed.
 
