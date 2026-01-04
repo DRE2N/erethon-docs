@@ -1,6 +1,6 @@
 ---
 title: AI-Ziele
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 ## avoid_target
